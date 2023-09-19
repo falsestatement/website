@@ -19,7 +19,7 @@ module.exports = require("os");
 
 /***/ }),
 
-/***/ 2671:
+/***/ 5151:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 // ESM COMPAT FLAG
@@ -70,7 +70,7 @@ function GET() {
 
 const dynamic = 'force-static'
 
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?page=%2Ffavicon.ico%2Froute&name=app%2Ffavicon.ico%2Froute&pagePath=private-next-app-dir%2Ffavicon.ico&appDir=%2Fhome%2FFalseStatement%2FDocuments%2FGitProjects%2Fpersonal_website%2Fapp&appPaths=%2Ffavicon.ico&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&basePath=&assetPrefix=&nextConfigOutput=standalone&preferredRegion=&middlewareConfig=e30%3D!
+;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?page=%2Ffavicon.ico%2Froute&name=app%2Ffavicon.ico%2Froute&pagePath=private-next-app-dir%2Ffavicon.ico&appDir=%2Fhome%2FFalseStatement%2FDocuments%2FGitProjects%2Fpersonal_website%2Fapp&appPaths=%2Ffavicon.ico&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!
 
 // @ts-ignore this need to be imported from next/dist to be external
 
@@ -80,7 +80,7 @@ const dynamic = 'force-static'
 const AppRouteRouteModule = app_route_module.AppRouteRouteModule;
 // We inject the nextConfigOutput here so that we can use them in the route
 // module.
-const nextConfigOutput = "standalone"
+const nextConfigOutput = ""
 const routeModule = new AppRouteRouteModule({
     definition: {
         kind: route_kind.RouteKind.APP_ROUTE,
@@ -111,7 +111,7 @@ const originalPathname = "/favicon.ico/route";
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [587,218], () => (__webpack_exec__(2671)));
+var __webpack_exports__ = __webpack_require__.X(0, [587,218], () => (__webpack_exec__(5151)));
 module.exports = __webpack_exports__;
 
 })();
