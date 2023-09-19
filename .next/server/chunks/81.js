@@ -7,8 +7,8 @@ exports.modules = {
 
 // Exports
 module.exports = {
-	"style": {"fontFamily":"'__Inter_20951f', '__Inter_Fallback_20951f'","fontStyle":"normal"},
-	"className": "__className_20951f"
+	"style": {"fontFamily":"'__Inter_e66fe9', '__Inter_Fallback_e66fe9'","fontStyle":"normal"},
+	"className": "__className_e66fe9"
 };
 
 
@@ -5086,7 +5086,7 @@ const createProxy = _serveredge.createClientModuleProxy; //# sourceMappingURL=mo
 
 /***/ }),
 
-/***/ 8225:
+/***/ 4663:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -7816,7 +7816,7 @@ _export(exports, {
         return NotFoundBoundary;
     }
 });
-const { default: AppRouter } = __webpack_require__(8225);
+const { default: AppRouter } = __webpack_require__(4663);
 const { default: LayoutRouter } = __webpack_require__(7149);
 const { default: RenderFromTemplateContext } = __webpack_require__(9278);
 const { staticGenerationAsyncStorage } = __webpack_require__(3539);
