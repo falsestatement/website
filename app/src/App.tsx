@@ -1,13 +1,11 @@
 import { BrowserRouter } from 'react-router-dom';
 import AppLayout from './layout/AppLayout';
 
-function App() {
+const App = () => {
     return (
-        <div className="App">
-            <BrowserRouter>
-                <AppLayout />
-            </BrowserRouter>
-        </div>
+        <BrowserRouter>
+            <AppLayout />
+        </BrowserRouter>
     );
 }
 
