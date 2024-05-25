@@ -1,0 +1,42 @@
+.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: hsla(201, 51%, 17%, 1);
+  background-image: radial-gradient(
+      at 83% 74%,
+      hsla(231, 56%, 31%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 9% 28%, hsla(206, 48%, 35%, 1) 0px, transparent 50%),
+    radial-gradient(at 23% 88%, hsla(188, 78%, 20%, 1) 0px, transparent 50%),
+    radial-gradient(at 73% 19%, hsla(242, 51%, 17%, 1) 0px, transparent 50%);
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow-x: hidden;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+}
+
+.nav {
+  --nav-foreground-color: #adb6c4;
+
+  display: flex;
+  color: var(--nav-foreground-color);
+  gap: 2em;
+}
+
+.socials {
+  display: flex;
+  gap: 1em;
+}

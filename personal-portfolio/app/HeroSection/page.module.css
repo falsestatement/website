@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0em 6em;
+  height: 90vh;
+}
+
+.mainHeading {
+  font-weight: 800;
+  line-height: 1em;
+    margin-bottom: 20px;
+}
+
+.subHeading {
+    font-weight: 600;
+  color: #ff7f51;
+    line-height: 1.2em;
+    margin-bottom: 4em;
+}
+
+.resumeButton {
+    font-size: var(--h6-font-size);
+}
