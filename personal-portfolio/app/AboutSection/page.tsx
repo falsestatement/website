@@ -29,21 +29,22 @@ const AboutSection = () => {
   ];
 
   return (
-    <section>
+    <section className={styles["about-section"]}>
       <div className={styles.photo}>Professional Photo Here</div>
-      <h4>
+      <h4 className={styles.description}>
         A master’s student with interest in RTL design, programming, 3D
         modeling, and finance.
       </h4>
-
-      <h6>Technical Skills</h6>
-      <ul>
-        {techSkills.map((skill) => (
-          <li key={`${skill}-icon`}>
-            <TechSkillIcon variant={skill} />
-          </li>
-        ))}
-      </ul>
+            <div className={styles.skills}>
+                <h6 className={styles["skills-subheading"]}>Technical Skills</h6>
+                <ul className={styles["skills-list"]}>
+                    {techSkills.map((skill) => (
+                        <li key={`${skill}-icon`}>
+                            <TechSkillIcon variant={skill} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
     </section>
   );
 };

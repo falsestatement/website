@@ -1,6 +1,8 @@
 :root {
   --foreground-color: #e4efff;
   --background-color: #000d17;
+  --accent-light-blue: #adb6c4;
+  --accent-orange: #ff7f51;
   --background-rgb: 0, 13, 23;
   --foreground-rgb: 228, 239, 255;
   --h1-font-size: 7.993rem;
@@ -18,7 +20,7 @@ body {
   margin: 0;
   padding: 0;
   max-width: 100vw;
-    overflow-x: clip;
+  overflow-x: clip;
 }
 
 body {

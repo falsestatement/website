@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 2em 15rem 2em;
+    max-width: 1440px;
   overflow: hidden;
 }
 
@@ -23,7 +24,7 @@
 
 .subHeading {
   font-weight: 600;
-  color: #ff7f51;
+  color: var(--accent-orange);
   line-height: 1.2em;
   margin-bottom: 2em;
   font-size: var(--h6-font-size);
