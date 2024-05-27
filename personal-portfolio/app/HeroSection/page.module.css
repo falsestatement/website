@@ -1,25 +1,53 @@
-.main {
-  display: flex;
+.heroSection {
   position: relative;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 0em 6em;
-  height: 90vh;
+  padding: 0 2em 15rem 2em;
+  overflow: hidden;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mainHeading {
   font-weight: 800;
   line-height: 1em;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: var(--h3-font-size);
+  text-align: center;
 }
 
 .subHeading {
-    font-weight: 600;
+  font-weight: 600;
   color: #ff7f51;
-    line-height: 1.2em;
-    margin-bottom: 4em;
+  line-height: 1.2em;
+  margin-bottom: 2em;
+  font-size: var(--h6-font-size);
+  text-align: center;
 }
 
 .resumeButton {
-    font-size: var(--h6-font-size);
+  font-size: var(--h6-font-size);
+}
+
+.image {
+  position: relative;
+  min-width: min(90vw, 90vh);
+  min-height: min(90vw, 90vh);
+  mix-blend-mode: color-dodge;
+  mask-image: linear-gradient(black 45%, transparent 60%);
+  margin: max(-5vh, -5vw) 0 max(-35vh, -35vw) 0;
+}
+
+@media (min-width: 850px) {
+    .mainHeading {
+        font-size: var(--h1-font-size);
+    }
+    .subHeading {
+        font-size: var(--h5-font-size);
+    }
 }
