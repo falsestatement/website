@@ -3,8 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 2em 15rem 2em;
-    max-width: var(--max-width);
+  max-width: var(--max-width);
   overflow: hidden;
 }
 
@@ -45,10 +44,10 @@
 }
 
 @media (min-width: 850px) {
-    .mainHeading {
-        font-size: var(--h1-font-size);
-    }
-    .subHeading {
-        font-size: var(--h5-font-size);
-    }
+  .mainHeading {
+    font-size: var(--h1-font-size);
+  }
+  .subHeading {
+    font-size: var(--h5-font-size);
+  }
 }

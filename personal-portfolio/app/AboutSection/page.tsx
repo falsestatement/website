@@ -31,9 +31,14 @@ const AboutSection = () => {
 
   return (
     <section className={styles["about-section"]}>
-      <div className={styles.photo}>
-        <Image src="/donotcommit/test.jpg" fill style={{objectFit: "cover", objectPosition: "50% 20%"}} alt="headshot.jpg" />
-      </div>
+      <Image
+        src="/donotcommit/grad.jpg"
+        width={1736}
+        height={2689}
+        style={{ objectFit: "cover", objectPosition: "50% 20%" }}
+        className={styles.photo}
+        alt="headshot.jpg"
+      />
       <div className={styles.description}>
         <p className={styles["description-short"]}>
           A Master’s student with passion in RTL design, programming, 3D
@@ -41,9 +46,9 @@ const AboutSection = () => {
         </p>
         <p className={styles["description-long"]}>
           Hello! I am a master’s student attending the University of Illinois,
-          Urbana Champaign, studying financial engineering. I have a wide range
-          of interests, ranging from hardware layout and RTL design, all the way
-          to web development, UI/UX design, and much more!
+          studying financial engineering. I have a wide range of interests,
+          ranging from hardware layout and RTL design, all the way to web
+          development, 3D modeling, and much more!
         </p>
       </div>
       <div className={styles.skills}>

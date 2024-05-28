@@ -1,17 +1,14 @@
 .about-section {
-  padding: 0 2em;
   display: grid;
   gap: 4em;
   max-width: var(--max-width);
-  min-height: 30em;
-  margin-bottom: 200px;
 }
 
 .description {
   font-weight: 400;
-  font-size: var(--h5-font-size);
-  line-height: calc(var(--h5-font-size) * 1.4);
-  letter-spacing: calc(var(--h5-font-size) * 0.014);
+    font-size: var(--h6-font-size);
+    line-height: calc(var(--h6-font-size) * 1.4);
+    letter-spacing: calc(var(--h6-font-size) * 0.02);
   text-align: center;
 }
 
@@ -26,11 +23,12 @@
 
 .photo {
   position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 30em;
+    width: 100%;
+  max-width: 20em;
+  height: auto;
   grid-row: 2;
   margin: auto;
+    border-radius: 10px;
 }
 
 .skills {
@@ -75,13 +73,12 @@
   }
 
   .photo {
+  max-width: 50em;
+        max-height: 30em;
     grid-row: 1;
   }
 
   .description {
-    font-size: var(--h6-font-size);
-    line-height: calc(var(--h6-font-size) * 1.4);
-    letter-spacing: calc(var(--h6-font-size) * 0.014);
     grid-row: 1;
     text-align: left;
   }
@@ -101,9 +98,12 @@
 @media (min-width: 1050px) {
   .about-section {
     grid-template-columns: 1fr 2fr;
-        min-height: 0;
-        max-height: 30em;
   }
+    
+  .skills {
+    grid-column: 2 / span 1;
+    }
+
   .photo {
     grid-row: 1 / span 2;
   }

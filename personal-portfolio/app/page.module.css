@@ -5,8 +5,8 @@
 }
 
 .meshGradientBg {
-  margin-top: -4em;
-  padding-top: 6em;
+    margin-top: -4em;
+  padding: 6em 2em 0 2em;
   background-color: hsla(201, 51%, 17%, 1);
   background-image: linear-gradient(
       transparent 50vh,
@@ -16,10 +16,10 @@
     radial-gradient(at 9% 28%, hsla(206, 48%, 35%, 1) 0px, transparent 50%),
     radial-gradient(at 23% 88%, hsla(188, 78%, 20%, 1) 0px, transparent 50%),
     radial-gradient(at 73% 19%, hsla(242, 51%, 17%, 1) 0px, transparent 50%);
-  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+    gap: 15em;
 }
 
 .header {
@@ -35,45 +35,50 @@
 
 .navbar {
   display: flex;
-  max-width: calc(6em + var(--max-width));
+  max-width: var(--max-width);
   width: 100%;
   justify-content: space-between;
   align-items: center;
+    color: var(--accent-light-blue);
+    margin: 0 2em;
 }
 
 .nav {
   display: none;
-  margin: 0 0 0 2em;
+  margin: 0;
   padding: 0;
+    color: inherit;
 }
 
 ul.socials > li,
 ul.nav > li {
-  padding: 1em;
+  padding: 1em 0;
 }
 
 ul.socials > li:hover {
-  color: var(--accent-light-blue);
+  color: var(--accent-orange);
 }
 
 .socials {
   display: none;
   padding: 0;
-  margin: 0 2em 0 0;
+  margin: 0;
+    color: inherit;
 }
 
 .hamburger {
-  margin: 1em 2em;
+  margin: 1em 0;
 }
 
 @media (min-width: 900px) {
   .nav {
     display: flex;
-    color: var(--accent-light-blue);
+    gap: 2em;
   }
 
   .socials {
     display: flex;
+    gap: 2em;
   }
 
   .hamburger {
