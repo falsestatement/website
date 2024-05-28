@@ -28,6 +28,8 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 2rem 0.5rem 2rem;
+    position: relative;
+    backdrop-filter: blur(3px);
 }
 
 .subHeading {
@@ -49,6 +51,8 @@
 .resumeButton {
     margin-top:2em;
   font-size: var(--h6-font-size);
+    color: var(--accent-light-blue);
+    background-color: var(--background-color);
     position:relative;
 }
 

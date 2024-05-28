@@ -2,7 +2,7 @@
     display:flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 20em;
+    gap: 15em;
     margin-top: -4em;
     padding: 0 2em 0 2em;
 }
@@ -29,9 +29,8 @@
   top: 0px;
   display: flex;
   justify-content: center;
-  background-color: rgba(var(--background-rgb), 0.3);
+  background-color: var(--background-color);
   background-opacity: 1%;
-  backdrop-filter: blur(1em);
   z-index: 1;
 }
 
@@ -41,7 +40,7 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-    color: var(--accent-light-blue);
+    color: var(--foreground-color);
     margin: 0 2em;
 }
 

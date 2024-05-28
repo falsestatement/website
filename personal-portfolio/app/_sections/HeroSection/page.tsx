@@ -12,7 +12,7 @@ const HeroSection = () => {
         style={{ objectFit: "cover" }}
         className={styles.image}
         alt="Abstract CPU Image"
-                priority
+        priority
       />
       <div className={styles.title}>
         <h1 className={styles.mainHeading}>ADRIAN CHENG</h1>
@@ -22,7 +22,7 @@ const HeroSection = () => {
       </div>
       <button className={styles.resumeButton}>
         <DownloadIcon />
-        Resume
+        <p>Resume</p>
       </button>
     </section>
   );
