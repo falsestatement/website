@@ -2,6 +2,7 @@
   display: grid;
   gap: 4em;
   max-width: var(--max-width);
+    padding: 0 2em;
 }
 
 .description {

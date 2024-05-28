@@ -3,7 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   max-width: var(--max-width);
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -11,6 +14,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+    padding: 0 2em;
 }
 
 .mainHeading {
@@ -28,6 +32,9 @@
   margin-bottom: 2em;
   font-size: var(--h6-font-size);
   text-align: center;
+    background: var(--background-color);
+    padding:0.3em 1em;
+    border-radius: 10px;
 }
 
 .resumeButton {
@@ -35,12 +42,14 @@
 }
 
 .image {
-  position: relative;
-  min-width: min(90vw, 90vh);
-  min-height: min(90vw, 90vh);
+  position: absolute;
+  top: 5em;
+  width: 100%;
+  height: 100%;
   mix-blend-mode: color-dodge;
-  mask-image: linear-gradient(black 45%, transparent 60%);
-  margin: max(-5vh, -5vw) 0 max(-35vh, -35vw) 0;
+  mask-image: linear-gradient(black 50%, transparent 90%);
+    filter: brightness(0.6) saturate(2);
+  margin: auto 0 max(-35vh, -35vw) auto;
 }
 
 @media (min-width: 850px) {

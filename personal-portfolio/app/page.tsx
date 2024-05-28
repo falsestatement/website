@@ -5,11 +5,13 @@ import GitLabIcon from "@icon/GitLabIcon";
 import EmailIcon from "@icon/EmailIcon";
 import HamburgerIcon from "@icon/HamburgerIcon";
 
-import HeroSection from "@app/HeroSection/page";
-import AboutSection from "@app/AboutSection/page";
+import HeroSection from "@section/HeroSection/page";
+import AboutSection from "@section/AboutSection/page";
+import ProjectSection from "@section/ProjectSection/page";
+
 export default function Home() {
   return (
-    <main>
+    <>
       <header className={styles.header}>
         <nav className={styles.navbar}>
           <div className={styles.hamburger}>
@@ -48,10 +50,13 @@ export default function Home() {
           </ul>
         </nav>
       </header>
-      <div className={styles.meshGradientBg}>
-        <HeroSection />
-        <AboutSection />
-      </div>
-    </main>
+      <main className={styles.main}>
+        <div className={styles.meshGradientBg}>
+          <HeroSection />
+          <AboutSection />
+        </div>
+        <ProjectSection />
+      </main>
+    </>
   );
 }
