@@ -1,23 +1,34 @@
 .about-section {
   padding: 0 2em;
   display: grid;
-  gap: 2em;
-  max-width: 1440px;
+  gap: 4em;
+  max-width: var(--max-width);
+  min-height: 30em;
+  margin-bottom: 200px;
 }
 
 .description {
+  font-weight: 400;
   font-size: var(--h5-font-size);
+  line-height: calc(var(--h5-font-size) * 1.4);
+  letter-spacing: calc(var(--h5-font-size) * 0.014);
   text-align: center;
 }
 
+.description-long {
+  font-size: inherit;
+  display: none;
+}
+
+.description-short {
+  font-size: inherit;
+}
+
 .photo {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: gray;
-  border-radius: 10px;
+  min-height: 30em;
   grid-row: 2;
   margin: auto;
 }
@@ -25,7 +36,7 @@
 .skills {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 2em;
 }
@@ -36,30 +47,31 @@
 
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(3em, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(4em, 1fr));
   padding: 0;
   gap: 1em;
   margin: 0;
-    width: 100%;
+  width: 100%;
 }
 
 .skills-list > li:hover {
   color: var(--accent-orange);
 }
 
-.skills-list > li{
+.skills-list > li {
   margin: auto;
 }
 
-@media (min-width: 780px) {
+@media (min-width: 550px) {
   .about-section {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: min-content 1fr;
   }
 
   .skills {
-    grid-row: span 2;
     align-items: start;
+    grid-row: 2;
+    grid-column: span 2;
   }
 
   .photo {
@@ -67,11 +79,32 @@
   }
 
   .description {
-    grid-row: 2;
+    font-size: var(--h6-font-size);
+    line-height: calc(var(--h6-font-size) * 1.4);
+    letter-spacing: calc(var(--h6-font-size) * 0.014);
+    grid-row: 1;
     text-align: left;
+  }
+
+  .description-short {
+    display: none;
+  }
+  .description-long {
+    display: block;
   }
 
   .skills-subheading {
     margin: 0;
+  }
+}
+
+@media (min-width: 1050px) {
+  .about-section {
+    grid-template-columns: 1fr 2fr;
+        min-height: 0;
+        max-height: 30em;
+  }
+  .photo {
+    grid-row: 1 / span 2;
   }
 }
