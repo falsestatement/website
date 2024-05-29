@@ -5,9 +5,11 @@ import Image from "next/image";
 const ProjectCard = ({
   className,
   project,
+  bodyStyle,
 }: {
   className?: string;
   project: ProjectType;
+  bodyStyle?: string;
 }) => {
   return (
     <article className={[styles.card, className].join(" ")}>
@@ -21,8 +23,8 @@ const ProjectCard = ({
         alt={project.img}
         className={styles.image}
       />
-      <div className={styles["image-filter"]} />
-      <div className={styles.main}>
+      <div className={[styles["image-filter"], bodyStyle].join(" ")} />
+      <div className={[styles.main, bodyStyle].join(" ")}>
         <div>
           <h6 className={styles.title}>{project.title}</h6>
           <p className={styles.description}>{project.description}</p>

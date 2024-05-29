@@ -25,14 +25,27 @@
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 680px) {
     .riscvcpu {
         grid-column: span 2;
+    }
+
+    .riscvcpu-body-style {
+        max-height: 75%;
     }
 
     .netcap {
         grid-column: span 2;
         grid-row: 3;
+    }
+    
+    .netcap-body-style {
+        max-height: 75%;
+    }
+
+    .hwplatformer {
+        grid-row: 2;
+        grid-column: 2;
     }
 }
 
@@ -42,13 +55,27 @@
         grid-row: span 2;
     }
 
+    .riscvcpu-body-style {
+        max-width: 100%;
+        max-height: 50%;
+    }
+
     .netcap {
         grid-column: 2 / span 2;
         grid-row: 4 / span 2;
     }
+    
+    .netcap-body-style {
+        max-width: 100%;
+        max-height: 50%;
+    }
 
     .hfttrader {
-        grid-row: span 2;
+        grid-column: span 3;
+    }
+
+    .hfttrader-body-style {
+        max-height: 70%;
     }
 
     .hwplatformer {
@@ -59,8 +86,13 @@
     .portfolio {
         grid-row: 4 / span 2;
     }
+    
+    .portfolio-body-style{
+        max-height: 50%;
+    }
 
     .osutcg {
-        grid-column: span 2;
+        grid-row: 2 ;
+        grid-column: 3;
     }
 }
