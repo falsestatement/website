@@ -1,27 +1,20 @@
 .main {
-    display:flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 15em;
-    margin-top: -4em;
-    padding: 0 2em 0 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 15em;
+  margin-top: -4em;
+  padding: 0 2em 0 2em;
 }
 
 .meshGradientBg {
   margin: 0 -2em 0 -2em;
-  background-color: hsla(201, 51%, 17%, 1);
-  background-image: linear-gradient(
-      transparent 50vh,
-      var(--background-color) 100vh
-    ),
-    radial-gradient(at 83% 74%, hsla(231, 56%, 31%, 1) 0px, transparent 50%),
-    radial-gradient(at 9% 28%, hsla(206, 48%, 35%, 1) 0px, transparent 50%),
-    radial-gradient(at 23% 88%, hsla(188, 78%, 20%, 1) 0px, transparent 50%),
-    radial-gradient(at 73% 19%, hsla(242, 51%, 17%, 1) 0px, transparent 50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-    gap: 15em;
+  gap: 15em;
+  position: relative;
+  z-index: -3;
 }
 
 .header {
@@ -29,9 +22,9 @@
   top: 0px;
   display: flex;
   justify-content: center;
-  background-color: var(--background-color);
-  background-opacity: 1%;
   z-index: 1;
+  background-color: rgba(var(--background-rgb), 0.6);
+  backdrop-filter: blur(10px);
 }
 
 .navbar {
@@ -40,15 +33,15 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-    color: var(--foreground-color);
-    margin: 0 2em;
+  color: var(--foreground-color);
+  margin: 0 2em;
 }
 
 .nav {
   display: none;
   margin: 0;
   padding: 0;
-    color: inherit;
+  color: inherit;
 }
 
 ul.socials > li,
@@ -64,7 +57,7 @@ ul.socials > li:hover {
   display: none;
   padding: 0;
   margin: 0;
-    color: inherit;
+  color: inherit;
 }
 
 .hamburger {
@@ -84,5 +77,15 @@ ul.socials > li:hover {
 
   .hamburger {
     display: none;
+  }
+}
+
+@keyframes bg-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }

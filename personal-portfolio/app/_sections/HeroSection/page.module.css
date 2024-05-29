@@ -19,9 +19,8 @@
 .mainHeading {
   font-weight: 900;
   line-height: 1em;
-  font-size: var(--h4-font-size);
-    background-color: var(--background-color);
-    mix-blend-mode: darken;
+  font-size: var(--h3-font-size);
+    color: var(--foreground-color);
     border-radius: 10px 10px 0 0;
     height: 100%;
     display:flex;
@@ -30,7 +29,6 @@
     justify-content: center;
     padding: 1rem 2rem 0.5rem 2rem;
     position: relative;
-    backdrop-filter: blur(3px);
 }
 
 .subHeading {
@@ -38,8 +36,7 @@
     padding: 0.5rem 2rem 1rem 2rem;
   color: var(--accent-orange);
   line-height: 1.2em;
-  font-size: var(--p-font-size);
-    background-color: var(--background-color);
+  font-size: var(--h6-font-size);
     border-radius: 0 0 10px 10px;
     position:relative;
     height: 100%;
@@ -52,29 +49,9 @@
 .resumeButton {
     margin-top:2em;
   font-size: var(--h6-font-size);
-    color: var(--accent-light-blue);
-    background-color: var(--background-color);
+    color: var(--background-color);
+    background-color: var(--foreground-color);
     position:relative;
-}
-
-.image {
-  position: absolute;
-  top: 7em;
-  width: auto;
-  height: 100%;
-  mix-blend-mode: color-dodge;
-    filter: brightness(1.4) contrast(0.7) saturate(1.4);
-  mask-image: linear-gradient(black 50%, transparent 90%);
-  margin: auto 0 max(-35vh, -35vw) auto;
-}
-
-@media (min-width: 450px) {
-  .mainHeading {
-    font-size: var(--h3-font-size);
-  }
-  .subHeading {
-    font-size: var(--h6-font-size);
-  }
 }
 
 @media (min-width: 750px) {
