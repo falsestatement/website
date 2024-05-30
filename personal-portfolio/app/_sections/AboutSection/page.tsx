@@ -33,8 +33,8 @@ const AboutSection = () => {
     <section className={styles["about-section"]}>
       <Image
         src="/angle.jpg"
-        width={1775/2}
-        height={2662/2}
+        width={887}
+        height={1330}
         style={{ objectFit: "cover", objectPosition: "50% 10%" }}
         className={styles.photo}
         alt="headshot.jpg"
