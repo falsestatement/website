@@ -35,6 +35,7 @@ const AboutSection = () => {
         src="/angle.jpg"
         width={887}
         height={1330}
+        priority
         style={{ objectFit: "cover", objectPosition: "50% 10%" }}
         className={styles.photo}
         alt="headshot.jpg"

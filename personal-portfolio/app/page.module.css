@@ -5,6 +5,21 @@
   gap: 15em;
   margin-top: -4em;
   padding: 0 2em 0 2em;
+  position: relative;
+}
+
+.main::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  filter: url(#noise);
+  mask-image: linear-gradient(black 80vh, transparent 100vh);
+  pointer-events: none;
 }
 
 .meshGradientBg {
@@ -17,18 +32,18 @@
 }
 
 .meshGradientBg > svg {
-    display: none;
+  display: none;
 }
 
 .gradient-container {
   position: absolute;
   top: 0;
   height: 100%;
-        max-height: 100vh;
+  max-height: 100vh;
   width: 100%;
-        max-width: var(--max-width);
-        opacity: 0.6;
-    filter: url(#goo) blur(30px);
+  max-width: var(--max-width);
+  opacity: 0.6;
+  filter: url(#goo) blur(30px);
 }
 
 .grad1 {
@@ -44,8 +59,8 @@
   position: absolute;
   top: calc(var(--grad1-pos-y) - var(--gradient-circle-size) / 2);
   left: calc(var(--grad1-pos-x) - var(--gradient-circle-size) / 2);
-    animation: grad-rotate 35s reverse infinite;
-    transform-origin: calc(50% - 200px);
+  animation: grad-rotate 35s reverse infinite;
+  transform-origin: calc(50% - 200px);
 }
 .grad2 {
   background: radial-gradient(
@@ -60,7 +75,7 @@
   position: absolute;
   top: calc(var(--grad2-pos-y) - var(--gradient-circle-size) / 2);
   left: calc(var(--grad2-pos-x) - var(--gradient-circle-size) / 2);
-    animation: grad-horizontal 28s reverse infinite;
+  animation: grad-horizontal 28s reverse infinite;
 }
 .grad3 {
   background: radial-gradient(
@@ -75,8 +90,8 @@
   position: absolute;
   top: calc(var(--grad3-pos-y) - var(--gradient-circle-size) / 2);
   left: calc(var(--grad3-pos-x) - var(--gradient-circle-size) / 2);
-    transform-origin: calc(50% - 150px);
-    animation: grad-rotate 45s linear infinite;
+  transform-origin: calc(50% - 150px);
+  animation: grad-rotate 45s linear infinite;
 }
 .grad4 {
   background: radial-gradient(
@@ -91,7 +106,7 @@
   position: absolute;
   top: calc(var(--grad4-pos-y) - var(--gradient-circle-size) / 2);
   left: calc(var(--grad4-pos-x) - var(--gradient-circle-size) / 2);
-    animation: grad-vertical 25s reverse infinite;
+  animation: grad-vertical 25s reverse infinite;
 }
 .grad5 {
   background: radial-gradient(
@@ -106,8 +121,8 @@
   position: absolute;
   top: calc(var(--grad5-pos-y) - var(--gradient-circle-size) / 2);
   left: calc(var(--grad5-pos-x) - var(--gradient-circle-size) / 2);
-    transform-origin: calc(50% - 200px);
-    animation: grad-rotate 30s linear infinite;
+  transform-origin: calc(50% - 200px);
+  animation: grad-rotate 30s linear infinite;
 }
 .grad6 {
   background: radial-gradient(
@@ -122,8 +137,8 @@
   position: absolute;
   top: calc(var(--grad6-pos-y) - var(--gradient-circle-size) / 2);
   left: calc(var(--grad6-pos-x) - var(--gradient-circle-size) / 2);
-    transform-origin: calc(50% + 300px);
-    animation: grad-rotate 20s ease infinite;
+  transform-origin: calc(50% + 300px);
+  animation: grad-rotate 20s ease infinite;
 }
 
 .header {

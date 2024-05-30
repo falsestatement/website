@@ -8,6 +8,7 @@ import HamburgerIcon from "@icon/HamburgerIcon";
 import HeroSection from "@section/HeroSection/page";
 import AboutSection from "@section/AboutSection/page";
 import ProjectSection from "@section/ProjectSection/page";
+import ExperienceSection from "@section/ExperienceSection/page";
 
 export default function Home() {
     return (
@@ -68,6 +69,12 @@ export default function Home() {
                                 />
                                 <feComposite in="SourceGraphic" in2="goo" operator="atop" />
                             </filter>
+                            <filter id="noise">
+                                <feTurbulence
+                                    type="turbulence"
+                                    baseFrequency="0.5"
+                                />
+                            </filter>
                         </defs>
                     </svg>
                     <div className={styles["gradient-container"]}>
@@ -82,6 +89,7 @@ export default function Home() {
                     <AboutSection />
                 </div>
                 <ProjectSection />
+                <ExperienceSection />
             </main>
         </>
     );
