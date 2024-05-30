@@ -7,6 +7,41 @@
   --accent-orange: #ff7f51;
   --background-rgb: 0, 13, 23;
   --foreground-rgb: 228, 239, 255;
+
+  --gradient-circle-size: 900px;
+  
+    @media (min-width: 550px) {
+    --gradient-circle-size: 1300px;
+  }
+
+  @media (min-width: 950px) {
+    --gradient-circle-size: 1700px;
+  }
+
+  --grad1-color: 67, 81, 230;
+  --grad1-pos-y: 50%;
+  --grad1-pos-x: 70%;
+
+  --grad2-color: 230, 110, 67;
+  --grad2-pos-y: 60%;
+  --grad2-pos-x: 50%;
+
+  --grad3-color: 67, 230, 168;
+  --grad3-pos-y: 40%;
+  --grad3-pos-x: 30%;
+
+  --grad4-color: 67, 197, 230;
+  --grad4-pos-y: 30%;
+  --grad4-pos-x: 70%;
+
+  --grad5-color: 157, 67, 230;
+  --grad5-pos-y: 20%;
+  --grad5-pos-x: 90%;
+
+  --grad6-color: 230, 67, 143;
+  --grad6-pos-y: 40%;
+  --grad6-pos-x: 60%;
+
   --h1-font-size: 7.993rem;
   --h2-font-size: 5.653rem;
   --h3-font-size: 3.998rem;
