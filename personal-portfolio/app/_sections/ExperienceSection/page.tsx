@@ -1,4 +1,6 @@
 import styles from "./page.module.css";
+import CircuitLeft from "./CircuitLeft";
+import CircuitRight from "./CircuitRight";
 const ExperienceSection = () => {
   const experienceHistory = [
     {
@@ -35,6 +37,10 @@ const ExperienceSection = () => {
   ];
   return (
     <section className={styles["experience-section"]}>
+            <div className={styles["circuit-lines"]}>
+                <CircuitLeft className={styles["circuit-left"]}/>
+                <CircuitRight className={styles["circuit-right"]}/>
+            </div>
       <h4>Professional Experience</h4>
       <div className={styles["experience-grid"]}>
         {experienceHistory.map((job) => (
