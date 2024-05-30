@@ -32,10 +32,10 @@ const AboutSection = () => {
   return (
     <section className={styles["about-section"]}>
       <Image
-        src="/donotcommit/grad.jpg"
-        width={1736}
-        height={2689}
-        style={{ objectFit: "cover", objectPosition: "50% 20%" }}
+        src="/angle.jpg"
+        width={1775/2}
+        height={2662/2}
+        style={{ objectFit: "cover", objectPosition: "50% 10%" }}
         className={styles.photo}
         alt="headshot.jpg"
       />
