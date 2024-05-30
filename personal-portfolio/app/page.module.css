@@ -27,7 +27,8 @@
         max-height: 100vh;
   width: 100%;
         max-width: var(--max-width);
-    filter: url(#goo) blur(30px) brightness(0.6);
+        opacity: 0.8;
+    filter: url(#goo) blur(30px);
 }
 
 .grad1 {
