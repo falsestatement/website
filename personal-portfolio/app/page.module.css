@@ -37,7 +37,7 @@
       rgba(var(--grad1-color), 0) 50%
     )
     no-repeat;
-  mid-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
   width: var(--gradient-circle-size);
   height: var(--gradient-circle-size);
   position: absolute;
@@ -53,7 +53,7 @@
       rgba(var(--grad2-color), 0) 50%
     )
     no-repeat;
-  mid-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
   width: var(--gradient-circle-size);
   height: var(--gradient-circle-size);
   position: absolute;
@@ -68,7 +68,7 @@
       rgba(var(--grad3-color), 0) 50%
     )
     no-repeat;
-  mid-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
   width: var(--gradient-circle-size);
   height: var(--gradient-circle-size);
   position: absolute;
@@ -84,7 +84,7 @@
       rgba(var(--grad4-color), 0) 50%
     )
     no-repeat;
-  mid-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
   width: var(--gradient-circle-size);
   height: var(--gradient-circle-size);
   position: absolute;
@@ -99,7 +99,7 @@
       rgba(var(--grad5-color), 0) 50%
     )
     no-repeat;
-  mid-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
   width: var(--gradient-circle-size);
   height: var(--gradient-circle-size);
   position: absolute;
@@ -115,7 +115,7 @@
       rgba(var(--grad6-color), 0) 50%
     )
     no-repeat;
-  mid-blend-mode: hard-light;
+  mix-blend-mode: hard-light;
   width: var(--gradient-circle-size);
   height: var(--gradient-circle-size);
   position: absolute;
