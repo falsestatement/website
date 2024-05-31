@@ -67,6 +67,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+    .submit-container {
+        grid-column: span 2;
+    }
+
   .message-container {
     grid-column: span 2;
   }
@@ -90,4 +94,8 @@
     grid-row: 2;
     grid-column: span 3;
   }
+
+    .submit-container {
+        grid-column: span 5;
+    }
 }

@@ -26,13 +26,13 @@ const ContactSection = () => {
           <label>Message*</label>
           <textarea className={styles.message} />
         </div>
-      </form>
             <div className={styles["submit-container"]}>
                 <p>contact@adrian-cheng.com</p>
-                <button className={styles.send}>
+                <button type="submit" className={styles.send}>
                     Send <SendIcon />
                 </button>
             </div>
+      </form>
     </section>
   );
 };
