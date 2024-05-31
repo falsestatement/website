@@ -9,6 +9,7 @@ import HeroSection from "@section/HeroSection/page";
 import AboutSection from "@section/AboutSection/page";
 import ProjectSection from "@section/ProjectSection/page";
 import ExperienceSection from "@section/ExperienceSection/page";
+import ContactSection from "@section/ContactSection/page";
 
 export default function Home() {
     return (
@@ -90,6 +91,7 @@ export default function Home() {
                 </div>
                 <ProjectSection />
                 <ExperienceSection />
+                <ContactSection />
             </main>
         </>
     );
