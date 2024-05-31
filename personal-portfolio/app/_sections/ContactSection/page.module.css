@@ -18,8 +18,7 @@
   position: relative;
 }
 
-.contact-grid > div > input,
-.message {
+.inactive-input {
   box-sizing: border-box;
   width: 100%;
   border-radius: 10px;
@@ -29,12 +28,13 @@
   color: inherit;
   padding: 1em;
   font-size: var(--p-font-size);
+  transition: background-color 0.4s ease;
 }
 
 .submit-container {
   display: flex;
   justify-content: space-between;
-    align-items: center;
+  align-items: center;
   padding: 1em 0;
   gap: 1em;
 }
@@ -46,17 +46,58 @@
 .message {
   resize: none;
   height: 16em;
+  transition: background-color 0.4s ease;
 }
 
 .contact-grid > div > input:focus,
-.message:focus {
-  outline: none;
+.message:focus,
+.active-input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  min-height: 2em;
+  border: none;
+  color: inherit;
+  padding: 1em;
+  font-size: var(--p-font-size);
+  transition: background-color 0.4s ease;
+  background-color: var(--background-color);
+  outline: solid 3px var(--accent-blue);
 }
 
-.contact-grid > div > label {
+.invalid {
+    background-color: var(--accent-orange);
+}
+
+.inactive-label {
+  transition:
+    all 0.4s ease,
+    background-color 0.1s ease;
   position: absolute;
   left: 1em;
   top: 1em;
+}
+
+.contact-grid > div > input:focus ~ label,
+.contact-grid > div > textarea:focus ~ label {
+  transition:
+    all 0.4s ease,
+    background-color 0.2s ease 0.2s;
+  color: var(--accent-light-blue);
+  top: -0.5em;
+  background-color: var(--background-color);
+  font-size: 12px;
+  padding: 0 0.5em;
+}
+
+.active-label {
+  position: absolute;
+  color: var(--accent-light-blue);
+  top: -0.5em;
+  left: 1em;
+  background-color: var(--background-color);
+  font-size: 12px;
+  padding: 0 0.5em;
 }
 
 @media (min-width: 550px) {
@@ -67,9 +108,9 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-    .submit-container {
-        grid-column: span 2;
-    }
+  .submit-container {
+    grid-column: span 2;
+  }
 
   .message-container {
     grid-column: span 2;
@@ -95,7 +136,7 @@
     grid-column: span 3;
   }
 
-    .submit-container {
-        grid-column: span 5;
-    }
+  .submit-container {
+    grid-column: span 5;
+  }
 }
