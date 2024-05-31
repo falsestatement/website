@@ -190,6 +190,7 @@ ul.socials > li:hover {
 
 .footer {
     text-align: center;
+    color: var(--accent-light-blue);
     margin: 10em 2em 3em 2em;
 }
 

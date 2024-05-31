@@ -65,10 +65,6 @@
   outline: solid 3px var(--accent-blue);
 }
 
-.invalid {
-    background-color: var(--accent-orange);
-}
-
 .inactive-label {
   transition:
     all 0.4s ease,
@@ -76,6 +72,7 @@
   position: absolute;
   left: 1em;
   top: 1em;
+    pointer-events: none;
 }
 
 .contact-grid > div > input:focus ~ label,
@@ -98,6 +95,7 @@
   background-color: var(--background-color);
   font-size: 12px;
   padding: 0 0.5em;
+    pointer-events: none;
 }
 
 @media (min-width: 550px) {
