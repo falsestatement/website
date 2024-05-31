@@ -93,6 +93,9 @@ export default function Home() {
                 <ExperienceSection />
                 <ContactSection />
             </main>
+            <footer className={styles.footer}>
+                Copyright © 2024 Adrian Cheng - All Rights Reserved
+            </footer>
         </>
     );
 }
