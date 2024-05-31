@@ -190,7 +190,7 @@ ul.socials > li:hover {
 
 .footer {
     text-align: center;
-    margin: 10em 0 3em 0;
+    margin: 10em 2em 3em 2em;
 }
 
 @media (min-width: 900px) {
