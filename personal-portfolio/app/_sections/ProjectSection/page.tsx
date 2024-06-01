@@ -1,7 +1,8 @@
 import styles from "./page.module.css";
 import ProjectCard from "./ProjectCard";
+import { forwardRef } from "react";
 
-const ProjectSection = () => {
+const ProjectSection = forwardRef<HTMLElement>((_, ref) => {
   const projects = {
     riscvcpu: {
       title: "RISC-V PROCESSOR",
@@ -57,7 +58,7 @@ const ProjectSection = () => {
     },
   };
   return (
-    <section className={styles["projects-section"]}>
+    <section ref={ref} className={styles["projects-section"]}>
       <h4 className={styles.heading}> Project Gallery </h4>
       <div className={styles["projects-grid"]}>
         <ProjectCard
@@ -93,6 +94,6 @@ const ProjectSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ProjectSection;

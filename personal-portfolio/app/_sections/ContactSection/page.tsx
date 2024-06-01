@@ -2,9 +2,9 @@
 
 import styles from "./page.module.css";
 import SendIcon from "@icon/SendIcon";
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 
-const ContactSection = () => {
+const ContactSection = forwardRef<HTMLElement>((_, ref) => {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -19,7 +19,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className={styles["contact-section"]}>
+    <section ref={ref} className={styles["contact-section"]}>
       <h4>Contact Me</h4>
       <form className={styles["contact-grid"]}>
         <div>
@@ -145,6 +145,6 @@ const ContactSection = () => {
       </form>
     </section>
   );
-};
+});
 
 export default ContactSection;

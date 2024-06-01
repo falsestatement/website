@@ -1,10 +1,10 @@
 import DownloadIcon from "@icon/DownloadIcon";
-import Image from "next/image";
 import styles from "./page.module.css";
+import { forwardRef } from "react";
 
-const HeroSection = () => {
+const HeroSection = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section className={styles.heroSection}>
+    <section ref={ref} className={styles.heroSection}>
       <div className={styles.title}>
         <h1 className={styles.mainHeading}>ADRIAN CHENG</h1>
         <h5 className={styles.subHeading}>
@@ -17,6 +17,6 @@ const HeroSection = () => {
       </button>
     </section>
   );
-};
+});
 
 export default HeroSection;

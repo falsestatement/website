@@ -1,7 +1,9 @@
 import styles from "./page.module.css";
 import CircuitLeft from "./CircuitLeft";
 import CircuitRight from "./CircuitRight";
-const ExperienceSection = () => {
+import { forwardRef } from "react";
+
+const ExperienceSection = forwardRef<HTMLElement>((_, ref) => {
   const experienceHistory = [
     {
       startDate: "May 2024",
@@ -36,15 +38,18 @@ const ExperienceSection = () => {
     },
   ];
   return (
-    <section className={styles["experience-section"]}>
-            <div className={styles["circuit-lines"]}>
-                <CircuitLeft className={styles["circuit-left"]}/>
-                <CircuitRight className={styles["circuit-right"]}/>
-            </div>
+    <section ref={ref} className={styles["experience-section"]}>
+      <div className={styles["circuit-lines"]}>
+        <CircuitLeft className={styles["circuit-left"]} />
+        <CircuitRight className={styles["circuit-right"]} />
+      </div>
       <h4>Professional Experience</h4>
       <div className={styles["experience-grid"]}>
         {experienceHistory.map((job) => (
-          <article key={`${job.organization}-${job.position}-article`} className={styles.job}>
+          <article
+            key={`${job.organization}-${job.position}-article`}
+            className={styles.job}
+          >
             <div className={styles.date}>
               <h6 className={styles.start}>{job.startDate.toUpperCase()}</h6>
               <div className={styles["date-line"]} />
@@ -54,7 +59,9 @@ const ExperienceSection = () => {
               <div className={styles["job-heading"]}>
                 <h6>{job.organization}</h6>
                 <p className={styles["small-date"]}>
-                  <strong>{job.startDate} - {job.endDate}</strong>
+                  <strong>
+                    {job.startDate} - {job.endDate}
+                  </strong>
                 </p>
                 <p>
                   <strong>{job.position}</strong>
@@ -67,6 +74,6 @@ const ExperienceSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default ExperienceSection;

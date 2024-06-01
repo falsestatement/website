@@ -1,7 +1,9 @@
 import styles from "./page.module.css";
 import TechSkillIcon from "@icon/TechSkillIcon";
 import Image from "next/image";
-const AboutSection = () => {
+import { forwardRef } from "react";
+
+const AboutSection = forwardRef<HTMLElement>((_, ref) => {
   const techSkills = [
     "c",
     "csharp",
@@ -30,7 +32,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className={styles["about-section"]}>
+    <section ref={ref} className={styles["about-section"]}>
       <Image
         src="/angle.jpg"
         width={887}
@@ -64,6 +66,6 @@ const AboutSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default AboutSection;
