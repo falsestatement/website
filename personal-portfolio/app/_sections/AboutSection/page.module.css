@@ -41,7 +41,22 @@
   gap: 2em;
 }
 
+.skills-subheading-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.skills-default-subheading {
+  position: absolute;
+  top: 0;
+  color: var(--accent-orange);
+}
+
 .skills-subheading {
+  position: absolute;
+  top: 0;
+  opacity: 0;
   color: var(--accent-orange);
 }
 

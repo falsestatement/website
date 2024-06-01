@@ -97,11 +97,6 @@ export default function Home() {
         start: "top center",
         end: "center-=70px center",
         scrub: true,
-        onLeave: contextSafe
-          ? contextSafe(() => {
-              gsap.to(".nav-link-contact", { "--progress": "200%" });
-            })
-          : contextSafeError,
       },
     });
   });
@@ -127,7 +122,7 @@ export default function Home() {
         gsap.to(window, {
           scrollTo: {
             y: aboutRef.current !== null ? aboutRef.current : ".nav-link-home",
-            offsetY: 0,
+            offsetY: 250,
             autoKill: true,
           },
           duration: scrollToDuration,
@@ -141,7 +136,7 @@ export default function Home() {
         gsap.to(window, {
           scrollTo: {
             y: projectRef.current !== null ? projectRef.current : ".nav-link-home",
-            offsetY: 0,
+            offsetY: 150,
             autoKill: true,
           },
           duration: scrollToDuration,
@@ -155,7 +150,7 @@ export default function Home() {
         gsap.to(window, {
           scrollTo: {
             y: experienceRef.current !== null ? experienceRef.current : ".nav-link-home",
-            offsetY: 0,
+            offsetY: 150,
             autoKill: true,
           },
           duration: scrollToDuration,
@@ -185,20 +180,20 @@ export default function Home() {
             <HamburgerIcon />
           </div>
           <ul className={styles.nav}>
-            <li className="nav-link-home">
-              <a onClick={scrollToHero}>Home</a>
+            <li onClick={scrollToHero} className="nav-link-home">
+              Home
             </li>
-            <li className="nav-link-about">
-              <a onClick={scrollToAbout}>About</a>
+            <li onClick={scrollToAbout} className="nav-link-about">
+              About
             </li>
-            <li className="nav-link-project">
-              <a onClick={scrollToProject}>Projects</a>
+            <li onClick={scrollToProject} className="nav-link-project">
+              Projects
             </li>
-            <li className="nav-link-experience">
-              <a onClick={scrollToExperience}>Experience</a>
+            <li onClick={scrollToExperience} className="nav-link-experience">
+              Experience
             </li>
-            <li className="nav-link-contact">
-              <a onClick={scrollToContact}>Contact Me</a>
+            <li onClick={scrollToContact} className="nav-link-contact">
+              Contact Me
             </li>
           </ul>
           <ul className={styles.socials}>

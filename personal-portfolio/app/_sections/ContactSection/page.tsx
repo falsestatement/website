@@ -137,7 +137,7 @@ const ContactSection = forwardRef<HTMLElement>((_, ref) => {
           </label>
         </div>
         <div className={styles["submit-container"]}>
-          <p>contact@adrian-cheng.com</p>
+          <p className={styles["email"]}>contact@adrian-cheng.com</p>
           <button onClick={handleSubmit} type="submit" className={styles.send}>
             Send <SendIcon />
           </button>
