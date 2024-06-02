@@ -48,10 +48,26 @@
     justify-content: center;
 }
 
-.resumeButton {
+.button-container {
   visibility: hidden;
-    margin-top:2em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-top: 2em;
+  align-items: center;
+}
+
+.viewButton {
   font-size: var(--h6-font-size);
+    position:relative;
+  width: fit-content;
+}
+
+.resumeButton {
+  font-size: var(--h6-font-size);
+  background: none;
+  color: var(--foreground-color);
+  width: fit-content;
     position:relative;
 }
 
@@ -61,6 +77,14 @@
   }
   .subHeading {
     font-size: var(--h6-font-size);
+  }
+
+  .button-container {
+    flex-direction: row-reverse;
+  }
+
+  .resumeButton {
+    border: solid 2px var(--foreground-color);
   }
 }
 

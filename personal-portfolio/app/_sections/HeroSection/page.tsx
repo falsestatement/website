@@ -1,6 +1,7 @@
 "use client";
 
-import DownloadIcon from "@icon/DownloadIcon";
+import ResumeIcon from "@icon/ResumeIcon";
+import ProjectsIcon from "@icon/ProjectsIcon";
 import styles from "./page.module.css";
 import { forwardRef, useRef } from "react";
 
@@ -10,7 +11,7 @@ import { useGSAP } from "@gsap/react";
 const HeroSection = forwardRef<HTMLElement>((_, ref) => {
   const mainHeadingRef = useRef<HTMLHeadingElement>(null);
   const subHeadingRef = useRef<HTMLHeadingElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     gsap.registerPlugin(useGSAP);
@@ -44,10 +45,16 @@ const HeroSection = forwardRef<HTMLElement>((_, ref) => {
           Developing the whole technology stack, all the way down to hardware.
         </h5>
       </div>
-      <button ref={buttonRef} className={styles.resumeButton}>
-        <DownloadIcon />
-        <p>Resume</p>
-      </button>
+      <div ref={buttonRef} className={styles["button-container"]}>
+        <button className={styles.viewButton}>
+          <ProjectsIcon />
+          <p>View My Projects</p>
+        </button>
+        <button className={styles.resumeButton}>
+          <ResumeIcon />
+          <p>Resume</p>
+        </button>
+      </div>
     </section>
   );
 });

@@ -137,3 +137,9 @@ p {
 small {
   font-size: var(--small-font-size);
 }
+
+@media(hover: none) {
+  button:hover {
+    transform: none;
+  }
+}
