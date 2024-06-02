@@ -16,7 +16,7 @@ const ExperienceSection = forwardRef<HTMLElement>((_, ref) => {
       startDate: "Dec 2023",
       endDate: "Dec 2022",
       organization: "John Deere Financial",
-      position: "Project Lead",
+      position: "Intern Project Lead",
       description:
         "Lead a team of 6 through the development and deployment of a internal management application, allowing managers to more easily manage the access of their employees, saving over 37,000 USD worth of man hours in waiting for access changes to take effect.",
     },

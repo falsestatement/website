@@ -4,6 +4,7 @@ import Image from "next/image";
 import { forwardRef, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const AboutSection = forwardRef<HTMLElement>((_, ref) => {
   const techSkills = [
@@ -35,9 +36,44 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
 
   const headingRefs = useRef<HTMLHeadingElement[]>([]);
   const defaultHeadingRef = useRef<HTMLHeadingElement>(null);
+  const skillIconsRef = useRef<HTMLUListElement>(null);
 
   const { contextSafe } = useGSAP(() => {
-    gsap.registerPlugin(useGSAP);
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+    gsap.from(".skill-icon", {
+      y: -20,
+      opacity: 0,
+      stagger: 0.02,
+      scrollTrigger: {
+        trigger: skillIconsRef.current,
+        start: "top-=20px bottom",
+        toggleActions: "restart none none none",
+      },
+      delay: 0.4,
+    });
+
+    gsap.from(".description", {
+      y: -50,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: ".description",
+        start: "top-=20px bottom",
+        toggleActions: "restart none none none",
+      },
+      delay: 0.1
+    });
+
+    gsap.from(defaultHeadingRef.current, {
+      y: -25,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: defaultHeadingRef.current,
+        start: "top-=20px bottom",
+        toggleActions: "restart none none none",
+      },
+      delay: 0.3
+      
+    });
   });
 
   const showOnHover = contextSafe((headingRef: HTMLHeadingElement) => {
@@ -102,7 +138,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
         className={styles.photo}
         alt="headshot.jpg"
       />
-      <div className={styles.description}>
+      <div className={[styles.description, "description"].join(" ")}>
         <p className={styles["description-short"]}>
           A Master’s student with passion in RTL design, programming, 3D
           modeling, and finance.
@@ -134,12 +170,13 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
             </h6>
           ))}
         </div>
-        <ul className={styles["skills-list"]}>
+        <ul ref={skillIconsRef} className={styles["skills-list"]}>
           {techSkills.map((skill, index) => (
             <li
               onMouseEnter={() => showOnHover(headingRefs.current[index])}
               onMouseLeave={() => hideOnLeave(headingRefs.current[index])}
               key={`${skill.variant}-icon`}
+              className="skill-icon"
             >
               <TechSkillIcon variant={skill.variant} />
             </li>
