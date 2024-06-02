@@ -17,6 +17,7 @@
 }
 
 .mainHeading {
+  visibility: hidden;
   font-weight: 900;
   line-height: 1em;
   font-size: var(--h3-font-size);
@@ -32,6 +33,7 @@
 }
 
 .subHeading {
+  visibility: hidden;
   font-weight: 600;
     padding: 0.5rem 2rem 1rem 2rem;
   color: var(--accent-orange);
@@ -47,6 +49,7 @@
 }
 
 .resumeButton {
+  visibility: hidden;
     margin-top:2em;
   font-size: var(--h6-font-size);
     position:relative;

@@ -17,16 +17,19 @@ const HeroSection = forwardRef<HTMLElement>((_, ref) => {
     gsap.from(mainHeadingRef.current, {
       y: -150,
       opacity: 0,
+      autoAlpha:0,
       delay: 0.2
     });
 
     gsap.from(subHeadingRef.current, {
       y: -150,
+      autoAlpha:0,
       opacity: 0,
     });
     
     gsap.from(buttonRef.current, {
       opacity: 0,
+      autoAlpha:0,
       delay: 1,
     });
   });

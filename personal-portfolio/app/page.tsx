@@ -35,6 +35,7 @@ export default function Home() {
 
     gsap.from(navbarRef.current, {
       y: "-100%-=2em",
+      autoAlpha: 0,
       delay: 1,
     });
 
@@ -223,16 +224,24 @@ export default function Home() {
           </ul>
           <ul className={styles.socials}>
             <li>
-              <LinkedInIcon />
+              <a href="https://www.linkedin.com/in/adrianpccheng/">
+                <LinkedInIcon />
+              </a>
             </li>
             <li>
-              <GitHubIcon />
+              <a href="https://www.github.com/falsestatement">
+                <GitHubIcon />
+              </a>
             </li>
             <li>
-              <GitLabIcon />
+              <a href="https://gitlab.engr.illinois.edu/acheng27">
+                <GitLabIcon />
+              </a>
             </li>
             <li>
-              <EmailIcon />
+              <a href="mailto:contact@adrian-cheng.com">
+                <EmailIcon />
+              </a>
             </li>
           </ul>
         </nav>
