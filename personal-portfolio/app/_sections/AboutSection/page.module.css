@@ -3,6 +3,7 @@
   gap: 4em;
   max-width: var(--max-width);
     padding: 0 2em;
+  margin: auto;
 }
 
 .description {
@@ -44,18 +45,23 @@
 .skills-subheading-container {
   position: relative;
   width: 100%;
-  margin-bottom: 1em;
+  font-size: var(--h6-font-size);
+  height: 1.5em;
 }
 
 .skills-default-subheading {
   position: absolute;
   top: 0;
+  width: 100%;
+  text-align: center;
   color: var(--accent-orange);
 }
 
 .skills-subheading {
   position: absolute;
   top: 0;
+  width: 100%;
+  text-align: center;
   opacity: 0;
   color: var(--accent-orange);
 }
@@ -87,6 +93,14 @@
     align-items: start;
     grid-row: 2;
     grid-column: span 2;
+  }
+
+  .skills-subheading {
+    text-align: start;
+  }
+
+  .skills-default-subheading {
+    text-align: start;
   }
 
   .photo {

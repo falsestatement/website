@@ -25,12 +25,19 @@ export default function Home() {
   const projectRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
 
   const contextSafeError = () =>
     console.error("unable to acquire contextSafe.");
 
   const { contextSafe } = useGSAP((_, contextSafe) => {
     gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
+
+    gsap.from(navbarRef.current, {
+      y: "-100%-=2em",
+      delay: 1,
+    });
+
     gsap.to(".nav-link-home", {
       "--progress": "100%",
       scrollTrigger: {
@@ -99,6 +106,15 @@ export default function Home() {
         scrub: true,
       },
     });
+
+    gsap.to(".bg-grad", {
+      y: "100%",
+      scrollTrigger: {
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
   });
 
   const scrollToDuration = 1;
@@ -135,7 +151,10 @@ export default function Home() {
     ? contextSafe(() => {
         gsap.to(window, {
           scrollTo: {
-            y: projectRef.current !== null ? projectRef.current : ".nav-link-home",
+            y:
+              projectRef.current !== null
+                ? projectRef.current
+                : ".nav-link-home",
             offsetY: 150,
             autoKill: true,
           },
@@ -149,7 +168,10 @@ export default function Home() {
     ? contextSafe(() => {
         gsap.to(window, {
           scrollTo: {
-            y: experienceRef.current !== null ? experienceRef.current : ".nav-link-home",
+            y:
+              experienceRef.current !== null
+                ? experienceRef.current
+                : ".nav-link-home",
             offsetY: 150,
             autoKill: true,
           },
@@ -163,7 +185,10 @@ export default function Home() {
     ? contextSafe(() => {
         gsap.to(window, {
           scrollTo: {
-            y: contactRef.current !== null ? contactRef.current : ".nav-link-home",
+            y:
+              contactRef.current !== null
+                ? contactRef.current
+                : ".nav-link-home",
             offsetY: 0,
             autoKill: true,
           },
@@ -175,7 +200,7 @@ export default function Home() {
   return (
     <>
       <header className={styles.header}>
-        <nav className={styles.navbar}>
+        <nav ref={navbarRef} className={styles.navbar}>
           <div className={styles.hamburger}>
             <HamburgerIcon />
           </div>
@@ -235,7 +260,7 @@ export default function Home() {
               </filter>
             </defs>
           </svg>
-          <div className={styles["gradient-container"]}>
+          <div className={[styles["gradient-container"], "bg-grad"].join(" ")}>
             <div className={styles.grad1} />
             <div className={styles.grad2} />
             <div className={styles.grad3} />
@@ -244,8 +269,8 @@ export default function Home() {
             <div className={styles.grad6} />
           </div>
           <HeroSection ref={heroRef} />
-          <AboutSection ref={aboutRef} />
         </div>
+        <AboutSection ref={aboutRef} />
         <ProjectSection ref={projectRef} />
         <ExperienceSection ref={experienceRef} />
         <ContactSection ref={contactRef} />

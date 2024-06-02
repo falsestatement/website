@@ -15,7 +15,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
     { variant: "javascript", name: "JavaScript" },
     { variant: "typescript", name: "TypeScript" },
     { variant: "systemverilog", name: "SystemVerilog" },
-    { variant: "assembly", name: "Assembly (x86, RISC-V)" },
+    { variant: "assembly", name: "Assembly" },
     { variant: "golang", name: "Golang" },
     { variant: "html", name: "HTML" },
     { variant: "css", name: "CSS" },

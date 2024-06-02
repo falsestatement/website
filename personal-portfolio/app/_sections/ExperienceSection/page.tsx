@@ -14,11 +14,19 @@ const ExperienceSection = forwardRef<HTMLElement>((_, ref) => {
     },
     {
       startDate: "Dec 2023",
+      endDate: "Dec 2022",
+      organization: "John Deere Financial",
+      position: "Project Lead",
+      description:
+        "Lead a team of 6 through the development and deployment of a internal management application, allowing managers to more easily manage the access of their employees, saving over 37,000 USD worth of man hours in waiting for access changes to take effect.",
+    },
+    {
+      startDate: "Dec 2022",
       endDate: "Aug 2022",
       organization: "John Deere Financial",
       position: "Full Stack Engineering Intern",
       description:
-        "Created 2 internal applications, one for a AI based grouping system for incidents, and the other for employee management. The automation of several tasks done by these applications reduced 37,000 USD worth of man hours annually in managerial chores.",
+        "Added automatic incident ticket grouping through the use of ML as well as a frontend interface for our client to manage the groupings, decreasing the time spent on manual sorting and grouping from several days to minutes.",
     },
     {
       startDate: "May 2022",
