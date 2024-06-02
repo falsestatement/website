@@ -1,6 +1,11 @@
+"use client";
 import styles from "./page.module.css";
 import ProjectCard from "./ProjectCard";
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const ProjectSection = forwardRef<HTMLElement>((_, ref) => {
   const projects = {
@@ -57,36 +62,90 @@ const ProjectSection = forwardRef<HTMLElement>((_, ref) => {
       img: "netcap.png",
     },
   };
+
+  const sectionHeadingRef = useRef<HTMLHeadingElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const projectRefs = useRef<{ [key: string]: HTMLElement }>({});
+
+  useGSAP(() => {
+    gsap.registerPlugin(useGSAP, ScrollTrigger);
+    for (const project in projectRefs.current) {
+      gsap.from(projectRefs.current[project], {
+        scrollTrigger: {
+          trigger: projectRefs.current[project],
+          start: "top bottom",
+          toggleActions: "restart none none none",
+        },
+        y: -50,
+        opacity: 0,
+        delay: 0.2,
+      });
+    }
+
+    gsap.from(sectionHeadingRef.current, {
+      scrollTrigger: {
+        trigger: sectionHeadingRef.current,
+        start: "top bottom",
+        toggleActions: "restart none none none",
+      },
+      y: -50,
+      opacity: 0,
+      delay: 0.1
+    });
+
+  });
+
   return (
     <section ref={ref} className={styles["projects-section"]}>
-      <h4 className={styles.heading}> Project Gallery </h4>
-      <div className={styles["projects-grid"]}>
+      <h4 ref={sectionHeadingRef} className={styles.heading}>
+        {" "}
+        Project Gallery{" "}
+      </h4>
+      <div ref={gridRef} className={styles["projects-grid"]}>
         <ProjectCard
+          ref={(el) => {
+            projectRefs.current["riscvcpu"] = el!;
+          }}
           className={styles.riscvcpu}
           project={projects.riscvcpu}
           bodyStyle={styles["riscvcpu-body-style"]}
         />
         <ProjectCard
+          ref={(el) => {
+            projectRefs.current["netcap"] = el!;
+          }}
           className={styles.netcap}
           project={projects.netcap}
           bodyStyle={styles["netcap-body-style"]}
         />
         <ProjectCard
+          ref={(el) => {
+            projectRefs.current["hfttrader"] = el!;
+          }}
           className={styles.hfttrader}
           project={projects.hfttrader}
           bodyStyle={styles["hfttrader-body-style"]}
         />
         <ProjectCard
+          ref={(el) => {
+            projectRefs.current["portfolio"] = el!;
+          }}
           className={styles.portfolio}
           project={projects.portfolio}
           bodyStyle={styles["portfolio-body-style"]}
         />
         <ProjectCard
+          ref={(el) => {
+            projectRefs.current["hwplatformer"] = el!;
+          }}
           className={styles.hwplatformer}
           project={projects.hwplatformer}
           bodyStyle={styles["hwplatformer-body-style"]}
         />
         <ProjectCard
+          ref={(el) => {
+            projectRefs.current["osutcg"] = el!;
+          }}
           className={styles.osutcg}
           project={projects.osutcg}
           bodyStyle={styles["osutcg-body-style"]}

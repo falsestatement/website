@@ -2,7 +2,6 @@
   border-radius: 10px;
   position: relative;
   overflow: hidden;
-  transition: 0.1s all ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
