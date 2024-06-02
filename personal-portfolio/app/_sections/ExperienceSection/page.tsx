@@ -1,7 +1,10 @@
 import styles from "./page.module.css";
 import CircuitLeft from "./CircuitLeft";
 import CircuitRight from "./CircuitRight";
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const ExperienceSection = forwardRef<HTMLElement>((_, ref) => {
   const experienceHistory = [
@@ -45,25 +48,68 @@ const ExperienceSection = forwardRef<HTMLElement>((_, ref) => {
         "Assisted 26 students in main course assignments as well as grading assignments throughout the semester.",
     },
   ];
+
+  const gridRef = useRef<HTMLDivElement>(null);
+  const sectionHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".date-container", {
+      x: -100,
+      opacity: 0,
+      stagger: 0.1,
+      ease: "expo.out",
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: "top bottom",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+    gsap.from(".job-content-container", {
+      x: 200,
+      opacity: 0,
+      stagger: 0.1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: "top bottom",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+
+    gsap.from(sectionHeadingRef.current, {
+      y: -100,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: sectionHeadingRef.current,
+        start: "top bottom",
+        toggleActions: "restart none none none",
+      },
+    });
+  });
+
   return (
     <section ref={ref} className={styles["experience-section"]}>
       <div className={styles["circuit-lines"]}>
         <CircuitLeft className={styles["circuit-left"]} />
         <CircuitRight className={styles["circuit-right"]} />
       </div>
-      <h4>Professional Experience</h4>
-      <div className={styles["experience-grid"]}>
+      <h4 ref={sectionHeadingRef}>Professional Experience</h4>
+      <div ref={gridRef} className={styles["experience-grid"]}>
         {experienceHistory.map((job) => (
           <article
             key={`${job.organization}-${job.position}-article`}
             className={styles.job}
           >
-            <div className={styles.date}>
+            <div className={[styles.date, "date-container"].join(" ")}>
               <h6 className={styles.start}>{job.startDate.toUpperCase()}</h6>
               <div className={styles["date-line"]} />
               <h6 className={styles.end}>{job.endDate.toUpperCase()}</h6>
             </div>
-            <div className={styles.content}>
+            <div
+              className={[styles.content, "job-content-container"].join(" ")}
+            >
               <div className={styles["job-heading"]}>
                 <h6>{job.organization}</h6>
                 <p className={styles["small-date"]}>

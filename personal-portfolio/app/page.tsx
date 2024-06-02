@@ -17,6 +17,8 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 
+import {ReactLenis} from 'lenis/react';
+
 import { useRef } from "react";
 
 export default function Home() {
@@ -199,94 +201,94 @@ export default function Home() {
       })
     : contextSafeError;
   return (
-    <>
-      <header className={styles.header}>
-        <nav ref={navbarRef} className={styles.navbar}>
-          <div className={styles.hamburger}>
-            <HamburgerIcon />
+      <ReactLenis root options={{duration: 0.5}}>
+        <header className={styles.header}>
+          <nav ref={navbarRef} className={styles.navbar}>
+            <div className={styles.hamburger}>
+              <HamburgerIcon />
+            </div>
+            <ul className={styles.nav}>
+              <li onClick={scrollToHero} className="nav-link-home">
+                Home
+              </li>
+              <li onClick={scrollToAbout} className="nav-link-about">
+                About
+              </li>
+              <li onClick={scrollToProject} className="nav-link-project">
+                Projects
+              </li>
+              <li onClick={scrollToExperience} className="nav-link-experience">
+                Experience
+              </li>
+              <li onClick={scrollToContact} className="nav-link-contact">
+                Contact Me
+              </li>
+            </ul>
+            <ul className={styles.socials}>
+              <li>
+                <a href="https://www.linkedin.com/in/adrianpccheng/">
+                  <LinkedInIcon />
+                </a>
+              </li>
+              <li>
+                <a href="https://www.github.com/falsestatement">
+                  <GitHubIcon />
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.engr.illinois.edu/acheng27">
+                  <GitLabIcon />
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contact@adrian-cheng.com">
+                  <EmailIcon />
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main className={styles.main}>
+          <div className={styles.meshGradientBg}>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="10"
+                    result="blur"
+                  />
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                    result="goo"
+                  />
+                  <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+                </filter>
+                <filter id="noise">
+                  <feTurbulence type="turbulence" baseFrequency="0.5" />
+                </filter>
+              </defs>
+            </svg>
+            <div className={[styles["gradient-container"], "bg-grad"].join(" ")}>
+              <div className={styles.grad1} />
+              <div className={styles.grad2} />
+              <div className={styles.grad3} />
+              <div className={styles.grad4} />
+              <div className={styles.grad5} />
+              <div className={styles.grad6} />
+            </div>
+            <HeroSection ref={heroRef} />
           </div>
-          <ul className={styles.nav}>
-            <li onClick={scrollToHero} className="nav-link-home">
-              Home
-            </li>
-            <li onClick={scrollToAbout} className="nav-link-about">
-              About
-            </li>
-            <li onClick={scrollToProject} className="nav-link-project">
-              Projects
-            </li>
-            <li onClick={scrollToExperience} className="nav-link-experience">
-              Experience
-            </li>
-            <li onClick={scrollToContact} className="nav-link-contact">
-              Contact Me
-            </li>
-          </ul>
-          <ul className={styles.socials}>
-            <li>
-              <a href="https://www.linkedin.com/in/adrianpccheng/">
-                <LinkedInIcon />
-              </a>
-            </li>
-            <li>
-              <a href="https://www.github.com/falsestatement">
-                <GitHubIcon />
-              </a>
-            </li>
-            <li>
-              <a href="https://gitlab.engr.illinois.edu/acheng27">
-                <GitLabIcon />
-              </a>
-            </li>
-            <li>
-              <a href="mailto:contact@adrian-cheng.com">
-                <EmailIcon />
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main className={styles.main}>
-        <div className={styles.meshGradientBg}>
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-            <defs>
-              <filter id="goo">
-                <feGaussianBlur
-                  in="SourceGraphic"
-                  stdDeviation="10"
-                  result="blur"
-                />
-                <feColorMatrix
-                  in="blur"
-                  mode="matrix"
-                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-                  result="goo"
-                />
-                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-              </filter>
-              <filter id="noise">
-                <feTurbulence type="turbulence" baseFrequency="0.5" />
-              </filter>
-            </defs>
-          </svg>
-          <div className={[styles["gradient-container"], "bg-grad"].join(" ")}>
-            <div className={styles.grad1} />
-            <div className={styles.grad2} />
-            <div className={styles.grad3} />
-            <div className={styles.grad4} />
-            <div className={styles.grad5} />
-            <div className={styles.grad6} />
-          </div>
-          <HeroSection ref={heroRef} />
-        </div>
-        <AboutSection ref={aboutRef} />
-        <ProjectSection ref={projectRef} />
-        <ExperienceSection ref={experienceRef} />
-        <ContactSection ref={contactRef} />
-      </main>
-      <footer className={styles.footer}>
-        Copyright © 2024 Adrian Cheng - All Rights Reserved
-      </footer>
-    </>
+          <AboutSection ref={aboutRef} />
+          <ProjectSection ref={projectRef} />
+          <ExperienceSection ref={experienceRef} />
+          <ContactSection ref={contactRef} />
+        </main>
+        <footer className={styles.footer}>
+          Copyright © 2024 Adrian Cheng - All Rights Reserved
+        </footer>
+      </ReactLenis>
   );
 }
