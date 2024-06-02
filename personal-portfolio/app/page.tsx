@@ -201,7 +201,7 @@ export default function Home() {
       })
     : contextSafeError;
   return (
-      <ReactLenis root options={{duration: 0.5}}>
+      <ReactLenis root options={{duration: 0.7}}>
         <header className={styles.header}>
           <nav ref={navbarRef} className={styles.navbar}>
             <div className={styles.hamburger}>

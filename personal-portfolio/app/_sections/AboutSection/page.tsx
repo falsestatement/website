@@ -62,18 +62,6 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
       },
       delay: 0.1
     });
-
-    gsap.from(defaultHeadingRef.current, {
-      y: -25,
-      opacity: 0,
-      scrollTrigger: {
-        trigger: defaultHeadingRef.current,
-        start: "top-=20px bottom",
-        toggleActions: "restart none none none",
-      },
-      delay: 0.3
-      
-    });
   });
 
   const showOnHover = contextSafe((headingRef: HTMLHeadingElement) => {
