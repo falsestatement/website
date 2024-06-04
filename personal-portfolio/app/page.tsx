@@ -220,6 +220,9 @@ export default function Home() {
     const ctx = canvas?.getContext("2d");
 
     if (!ctx || !canvas) return;
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     const drawWidth = canvas.width;
     const drawHeight = canvas.height;
