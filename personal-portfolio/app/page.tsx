@@ -12,6 +12,8 @@ import ProjectSection from "@section/ProjectSection/page";
 import ExperienceSection from "@section/ExperienceSection/page";
 import ContactSection from "@section/ContactSection/page";
 
+import { scrollTo } from "@util/MainGSAP";
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -113,86 +115,35 @@ export default function Home() {
     });
   });
 
-  const scrollToDuration = 1;
+  const scrollToHero = scrollTo({
+    target: heroRef,
+    offset: 0,
+    contextSafe,
+  });
 
-  const scrollToHero = contextSafe
-    ? contextSafe(() => {
-        gsap.to(window, {
-          scrollTo: {
-            y: heroRef.current !== null ? heroRef.current : ".nav-link-home",
-            offsetY: 0,
-            autoKill: true,
-          },
-          duration: scrollToDuration,
-          ease: "power3",
-        });
-      })
-    : contextSafeError;
+  const scrollToAbout = scrollTo({
+    target: aboutRef,
+    offset: 150,
+    contextSafe,
+  });
 
-  const scrollToAbout = contextSafe
-    ? contextSafe(() => {
-        gsap.to(window, {
-          scrollTo: {
-            y: aboutRef.current !== null ? aboutRef.current : ".nav-link-home",
-            offsetY: 250,
-            autoKill: true,
-          },
-          duration: scrollToDuration,
-          ease: "power3",
-        });
-      })
-    : contextSafeError;
+  const scrollToProject = scrollTo({
+    target: projectRef,
+    offset: 150,
+    contextSafe,
+  });
 
-  const scrollToProject = contextSafe
-    ? contextSafe(() => {
-        gsap.to(window, {
-          scrollTo: {
-            y:
-              projectRef.current !== null
-                ? projectRef.current
-                : ".nav-link-home",
-            offsetY: 150,
-            autoKill: true,
-          },
-          duration: scrollToDuration,
-          ease: "power3",
-        });
-      })
-    : contextSafeError;
+  const scrollToExperience = scrollTo({
+    target: experienceRef,
+    offset: 150,
+    contextSafe,
+  });
 
-  const scrollToExperience = contextSafe
-    ? contextSafe(() => {
-        gsap.to(window, {
-          scrollTo: {
-            y:
-              experienceRef.current !== null
-                ? experienceRef.current
-                : ".nav-link-home",
-            offsetY: 150,
-            autoKill: true,
-          },
-          duration: scrollToDuration,
-          ease: "power3",
-        });
-      })
-    : contextSafeError;
-
-  const scrollToContact = contextSafe
-    ? contextSafe(() => {
-        gsap.to(window, {
-          scrollTo: {
-            y:
-              contactRef.current !== null
-                ? contactRef.current
-                : ".nav-link-home",
-            offsetY: 0,
-            autoKill: true,
-          },
-          duration: scrollToDuration,
-          ease: "power3",
-        });
-      })
-    : contextSafeError;
+  const scrollToContact = scrollTo({
+    target: contactRef,
+    offset: 0,
+    contextSafe,
+  });
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -220,7 +171,7 @@ export default function Home() {
     const ctx = canvas?.getContext("2d");
 
     if (!ctx || !canvas) return;
-    
+
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -310,7 +261,7 @@ export default function Home() {
         (point: { x: number; y: number }) => point.x,
         (point: { x: number; y: number }) => point.y,
       ).triangles.reduce(
-        (accum: number[][], cur: number, index: number) =>
+        (accum, cur, index) =>
           (index % 3 ? accum[accum.length - 1].push(cur) : accum.push([cur])) &&
           accum,
         [],
@@ -322,7 +273,7 @@ export default function Home() {
 
       requestAnimationFrame(renderPoints);
     };
-    
+
     requestAnimationFrame(renderPoints);
   }, []);
 

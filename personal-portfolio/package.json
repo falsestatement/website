@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@types/delaunator": "^5.0.2",
     "delaunator": "^5.0.1",
     "gsap": "^3.12.5",
     "lenis": "^1.1.1",
