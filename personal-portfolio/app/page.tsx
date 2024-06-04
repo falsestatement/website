@@ -166,6 +166,36 @@ export default function Home() {
     return result;
   };
 
+  const borderPoints = (
+    subdivisions: number,
+    minX: number,
+    maxX: number,
+    minY: number,
+    maxY: number,
+  ) => {
+    let result = [];
+    for (let i = 0; i < subdivisions + 1; i++) {
+      result.push({
+        x: minX + ((maxX - minX) * i) / (subdivisions + 1),
+        y: minY,
+      });
+      result.push({
+        x: maxX,
+        y: minY + ((maxY - minY) * i) / (subdivisions + 1),
+      });
+      result.push({
+        x: maxX - ((maxX - minX) * i) / (subdivisions + 1),
+        y: maxY,
+      });
+      result.push({
+        x: minX,
+        y: maxY - ((maxY - minY) * i) / (subdivisions + 1),
+      });
+    }
+
+    return result;
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
@@ -179,17 +209,11 @@ export default function Home() {
     const drawHeight = canvas.height;
 
     const numPoints = 50;
-    const minVelocity = -0.1;
-    const maxVelocity = 0.1;
-    const borderOffset = 300;
+    const minVelocity = -0.5;
+    const maxVelocity = 0.5;
 
-    const points = randomVectors(
-      numPoints,
-      -borderOffset,
-      drawWidth + borderOffset,
-      -borderOffset,
-      drawHeight + borderOffset,
-    );
+    const points = randomVectors(numPoints, 0, drawWidth, 0, drawHeight);
+    const border = borderPoints(5, 0, drawWidth, 0, drawHeight);
     const velocities = randomVectors(
       numPoints,
       minVelocity,
@@ -200,8 +224,8 @@ export default function Home() {
 
     const drawTriangle = (pointIndexes: number[]) => {
       const trianglePoints = pointIndexes.map((index) => [
-        points[index].x,
-        points[index].y,
+        [...points,...border][index].x,
+        [...points,...border][index].y,
       ]);
 
       const normYPos = Math.min(
@@ -235,19 +259,11 @@ export default function Home() {
       for (let i = 0; i < numPoints; i++) {
         const newX = points[i].x + velocities[i].x;
         const newY = points[i].y + velocities[i].y;
+        if (newX < 0 || newX > drawWidth) velocities[i].x = -velocities[i].x;
+        if (newY < 0 || newY > drawHeight) velocities[i].y = -velocities[i].y;
         points[i] = {
-          x:
-            newX > drawWidth + borderOffset
-              ? newX - borderOffset - drawWidth
-              : newX < -borderOffset
-                ? newX + drawWidth + borderOffset
-                : newX,
-          y:
-            newY > drawHeight + borderOffset
-              ? newY - borderOffset - drawHeight
-              : newY < -borderOffset
-                ? newY + drawHeight + borderOffset
-                : newY,
+          x: points[i].x + velocities[i].x,
+          y: points[i].y + velocities[i].y,
         };
       }
     };
@@ -257,7 +273,7 @@ export default function Home() {
       movePoints();
 
       const triangles = Delaunator.from(
-        points,
+        [...points, ...border],
         (point: { x: number; y: number }) => point.x,
         (point: { x: number; y: number }) => point.y,
       ).triangles.reduce(
