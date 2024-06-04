@@ -5,15 +5,13 @@
   align-items: center;
   justify-content: center;
   max-width: var(--max-width);
-  width: 100%;
   height: 100vh;
-    min-height: 450px;
-    padding: 0 2em;
+  min-height: 450px;
+  margin: auto;
 }
 
 .title {
   display: grid;
-    padding: 2em;
 }
 
 .mainHeading {
@@ -28,14 +26,12 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding: 1rem 2rem 0.5rem 2rem;
     position: relative;
 }
 
 .subHeading {
   visibility: hidden;
   font-weight: 600;
-    padding: 0.5rem 2rem 1rem 2rem;
   color: var(--accent-orange);
   line-height: 1.2em;
   font-size: var(--h6-font-size);
@@ -61,6 +57,7 @@
   font-size: var(--h6-font-size);
     position:relative;
   width: fit-content;
+  user-select: none;
 }
 
 .resumeButton {
@@ -69,6 +66,7 @@
   color: var(--foreground-color);
   width: fit-content;
     position:relative;
+    user-select: none;
 }
 
 @media (min-width: 750px) {

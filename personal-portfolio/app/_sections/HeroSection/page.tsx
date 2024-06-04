@@ -8,7 +8,7 @@ import { forwardRef, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-const HeroSection = forwardRef<HTMLElement>((_, ref) => {
+const HeroSection = forwardRef<HTMLElement, {onProjectClick: () => void;}>(({onProjectClick}, ref) => {
   const mainHeadingRef = useRef<HTMLHeadingElement>(null);
   const subHeadingRef = useRef<HTMLHeadingElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -46,7 +46,7 @@ const HeroSection = forwardRef<HTMLElement>((_, ref) => {
         </h5>
       </div>
       <div ref={buttonRef} className={styles["button-container"]}>
-        <button className={styles.viewButton}>
+        <button onClick={onProjectClick} className={styles.viewButton}>
           <ProjectsIcon />
           <p>View My Projects</p>
         </button>

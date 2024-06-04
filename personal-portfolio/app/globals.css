@@ -15,7 +15,7 @@
   }
 
   @media (min-width: 950px) {
-    --gradient-circle-size: 1700px;
+    --gradient-circle-size: 500px;
   }
 
   --grad1-color: 67, 81, 230;

@@ -22,134 +22,22 @@
   pointer-events: none;
 }
 
-.meshGradientBg {
-  margin: 0 -2em 0 -2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15em;
-  position: relative;
-}
-
-.meshGradientBg > svg {
-  display: none;
-  overflow: hidden;
-}
-
-.gradient-container {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  max-height: 100vh;
-  width: 100%;
-  max-width: var(--max-width);
-  opacity: 0.6;
-  filter: url(#goo) blur(30px);
-  pointer-events: none;
-    z-index: -1;
-}
-
-.grad1 {
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--grad1-color), 0.8) 0,
-      rgba(var(--grad1-color), 0) 50%
-    )
-    no-repeat;
-  mix-blend-mode: hard-light;
-  width: var(--gradient-circle-size);
-  height: var(--gradient-circle-size);
-  position: absolute;
-  top: calc(var(--grad1-pos-y) - var(--gradient-circle-size) / 2);
-  left: calc(var(--grad1-pos-x) - var(--gradient-circle-size) / 2);
-  animation: grad-rotate 35s reverse infinite;
-  transform-origin: calc(50% - 200px);
-}
-.grad2 {
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--grad2-color), 0.8) 0,
-      rgba(var(--grad2-color), 0) 50%
-    )
-    no-repeat;
-  mix-blend-mode: hard-light;
-  width: var(--gradient-circle-size);
-  height: var(--gradient-circle-size);
-  position: absolute;
-  top: calc(var(--grad2-pos-y) - var(--gradient-circle-size) / 2);
-  left: calc(var(--grad2-pos-x) - var(--gradient-circle-size) / 2);
-  animation: grad-horizontal 28s reverse infinite;
-}
-.grad3 {
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--grad3-color), 0.8) 0,
-      rgba(var(--grad3-color), 0) 50%
-    )
-    no-repeat;
-  mix-blend-mode: hard-light;
-  width: var(--gradient-circle-size);
-  height: var(--gradient-circle-size);
-  position: absolute;
-  top: calc(var(--grad3-pos-y) - var(--gradient-circle-size) / 2);
-  left: calc(var(--grad3-pos-x) - var(--gradient-circle-size) / 2);
-  transform-origin: calc(50% - 150px);
-  animation: grad-rotate 45s linear infinite;
-}
-.grad4 {
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--grad4-color), 0.8) 0,
-      rgba(var(--grad4-color), 0) 50%
-    )
-    no-repeat;
-  mix-blend-mode: hard-light;
-  width: var(--gradient-circle-size);
-  height: var(--gradient-circle-size);
-  position: absolute;
-  top: calc(var(--grad4-pos-y) - var(--gradient-circle-size) / 2);
-  left: calc(var(--grad4-pos-x) - var(--gradient-circle-size) / 2);
-  animation: grad-vertical 25s reverse infinite;
-}
-.grad5 {
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--grad5-color), 0.8) 0,
-      rgba(var(--grad5-color), 0) 50%
-    )
-    no-repeat;
-  mix-blend-mode: hard-light;
-  width: var(--gradient-circle-size);
-  height: var(--gradient-circle-size);
-  position: absolute;
-  top: calc(var(--grad5-pos-y) - var(--gradient-circle-size) / 2);
-  left: calc(var(--grad5-pos-x) - var(--gradient-circle-size) / 2);
-  transform-origin: calc(50% - 200px);
-  animation: grad-rotate 30s linear infinite;
-}
-.grad6 {
-  background: radial-gradient(
-      circle at center,
-      rgba(var(--grad6-color), 0.8) 0,
-      rgba(var(--grad6-color), 0) 50%
-    )
-    no-repeat;
-  mix-blend-mode: hard-light;
-  width: var(--gradient-circle-size);
-  height: var(--gradient-circle-size);
-  position: absolute;
-  top: calc(var(--grad6-pos-y) - var(--gradient-circle-size) / 2);
-  left: calc(var(--grad6-pos-x) - var(--gradient-circle-size) / 2);
-  transform-origin: calc(50% + 300px);
-  animation: grad-rotate 20s ease infinite;
-}
-
 .header {
   position: sticky;
   top: 0;
   display: flex;
   justify-content: center;
   z-index: 1;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0 ;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .navbar {
@@ -244,47 +132,5 @@ ul.socials > li:hover {
 
   .hamburger {
     display: none;
-  }
-}
-
-@keyframes grad-rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  50% {
-    transform: rotate(180deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes grad-vertical {
-  0% {
-    transform: translateY(-50%);
-  }
-
-  50% {
-    transform: translateY(20%);
-  }
-
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-@keyframes grad-horizontal {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  50% {
-    transform: translateX(50%);
-  }
-
-  100% {
-    transform: translateX(-50%);
   }
 }
