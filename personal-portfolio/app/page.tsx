@@ -13,6 +13,7 @@ import ExperienceSection from "@section/ExperienceSection/page";
 import ContactSection from "@section/ContactSection/page";
 
 import { scrollTo } from "@util/MainGSAP";
+import { QuadTree } from "@util/QuadTree";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -213,8 +214,12 @@ export default function Home() {
     const maxVelocity = 0.5;
 
     const points = randomVectors(numPoints, 0, drawWidth, 0, drawHeight);
-    const border = borderPoints(5, 0, drawWidth, 0, drawHeight);
-    const delaunay = Delaunator.from([...points, ...border], (p) => p.x, (p) => p.y);
+    const border = borderPoints(0, 0, drawWidth, 0, drawHeight);
+    const delaunay = Delaunator.from(
+      [...points, ...border],
+      (p) => p.x,
+      (p) => p.y,
+    );
 
     const velocities = randomVectors(
       numPoints,
@@ -224,12 +229,10 @@ export default function Home() {
       maxVelocity,
     );
 
-    const drawTriangle = (
-      pointIndexes: number[],
-    ) => {
+    const drawTriangle = (pointIndexes: number[]) => {
       const trianglePoints = pointIndexes.map((index) => [
-        delaunay.coords[2*index],
-        delaunay.coords[2*index+1],
+        delaunay.coords[2 * index],
+        delaunay.coords[2 * index + 1],
       ]);
 
       const normYPos = Math.min(
@@ -262,12 +265,12 @@ export default function Home() {
     const movePoints = () => {
       const newPoints = [];
       for (let i = 0; i < numPoints; i++) {
-        const newX = delaunay.coords[i*2] + velocities[i].x;
-        const newY = delaunay.coords[i*2+1] + velocities[i].y;
+        const newX = delaunay.coords[i * 2] + velocities[i].x;
+        const newY = delaunay.coords[i * 2 + 1] + velocities[i].y;
         if (newX < 0 || newX > drawWidth) velocities[i].x = -velocities[i].x;
         if (newY < 0 || newY > drawHeight) velocities[i].y = -velocities[i].y;
-        newPoints[i*2] = delaunay.coords[i*2] + velocities[i].x;
-        newPoints[i*2 + 1] = delaunay.coords[i*2+1] + velocities[i].y;
+        newPoints[i * 2] = delaunay.coords[i * 2] + velocities[i].x;
+        newPoints[i * 2 + 1] = delaunay.coords[i * 2 + 1] + velocities[i].y;
       }
       delaunay.coords = [...newPoints, ...border.flatMap((p) => [p.x, p.y])];
     };
@@ -276,6 +279,15 @@ export default function Home() {
       ctx.clearRect(0, 0, drawWidth, drawHeight);
       movePoints();
       delaunay.update();
+      const qtree = new QuadTree(
+        1,
+        0,
+        drawWidth,
+        0,
+        drawHeight,
+        delaunay.coords,
+        ctx,
+      );
 
       const triangles = delaunay.triangles.reduce(
         (accum, cur, index) =>
