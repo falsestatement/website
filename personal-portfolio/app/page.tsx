@@ -209,7 +209,7 @@ export default function Home() {
     const drawWidth = canvas.width;
     const drawHeight = canvas.height;
 
-    const numPoints = 50;
+    const numPoints = 100;
     const minVelocity = -0.5;
     const maxVelocity = 0.5;
 
@@ -279,14 +279,27 @@ export default function Home() {
       ctx.clearRect(0, 0, drawWidth, drawHeight);
       movePoints();
       delaunay.update();
+      const test = {
+        minw: 600,
+        maxw: 850,
+        minh: 150,
+        maxh: 350,
+      };
       const qtree = new QuadTree(
-        1,
+        5,
         0,
         drawWidth,
         0,
         drawHeight,
         delaunay.coords,
         ctx,
+      );
+
+      const importantPoints = qtree.findPoints(
+        test.minw,
+        test.maxw,
+        test.minh,
+        test.maxh,
       );
 
       const triangles = delaunay.triangles.reduce(
@@ -298,6 +311,19 @@ export default function Home() {
 
       for (let i = 0; i < triangles.length; i++) {
         drawTriangle(triangles[i]);
+      }
+
+      ctx.strokeStyle = "red";
+      ctx.strokeRect(
+        test.minw,
+        test.minh,
+        test.maxw - test.minw,
+        test.maxh - test.minh,
+      );
+
+      for (let i = 0; i < importantPoints.length / 2; i ++) {
+        ctx.fillStyle = "lime";
+        ctx.fillRect(importantPoints[2*i], importantPoints[2*i + 1], 10, 10);
       }
 
       requestAnimationFrame(renderPoints);
