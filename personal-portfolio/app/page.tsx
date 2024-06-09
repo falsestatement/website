@@ -153,7 +153,14 @@ export default function Home() {
     }
 
     offscreen = canvasRef.current.transferControlToOffscreen();
-    worker.postMessage({ canvas: offscreen }, [offscreen]);
+    worker.postMessage(
+      {
+        canvas: offscreen,
+        winWidth: window.innerWidth,
+        winHeight: window.innerHeight,
+      },
+      [offscreen],
+    );
     count++;
   }, []);
 
@@ -208,13 +215,15 @@ export default function Home() {
       <main className={styles.main}>
         <canvas
           ref={canvasRef}
-          width={1920}
-          height={1080}
+          width={1000}
+          height={1000}
           className={styles.canvas}
           onMouseMove={(e) => {
-            worker.postMessage({
-              mousePos: [e.clientX, e.clientY],
-            });
+            const rect = canvasRef.current?.getBoundingClientRect();
+            if (rect)
+              worker.postMessage({
+                mousePos: [e.clientX - rect.left, e.clientY - rect.top],
+              });
           }}
         >
           background image

@@ -2156,29 +2156,33 @@
     return result;
   };
   var mousePos = { x: 0, y: 0 };
-  var numPoints = 50;
   var minVelocity = -0.5;
   var maxVelocity = 0.5;
   var repulsiveForceConstant = -2e3;
-  var velocities = randomVectors(
-    numPoints,
-    minVelocity,
-    maxVelocity,
-    minVelocity,
-    maxVelocity
-  );
   self.onmessage = (e) => {
     const canvas = e.data.canvas;
     const ctx = canvas?.getContext("2d");
-    if (!ctx || !canvas) {
+    const windowInnerWidth = e.data.winWidth;
+    const windowInnerHeight = e.data.winHeight;
+    if (!ctx || !canvas || !windowInnerWidth || !windowInnerHeight) {
       mousePos = {
         x: e.data.mousePos[0],
         y: e.data.mousePos[1]
       };
       return;
     }
+    canvas.width = windowInnerWidth;
+    canvas.height = windowInnerHeight;
     const drawWidth = canvas.width;
     const drawHeight = canvas.height;
+    const numPoints = Math.floor(drawHeight * drawWidth / 25e3);
+    const velocities = randomVectors(
+      numPoints,
+      minVelocity,
+      maxVelocity,
+      minVelocity,
+      maxVelocity
+    );
     const points = randomVectors(numPoints, 0, drawWidth, 0, drawHeight);
     const border = borderPoints(1, 0, drawWidth, 0, drawHeight);
     const delaunay = Delaunator.from(
@@ -2202,10 +2206,6 @@
         "rgba(0, 255, 255, 0.3)",
         "rgba(0, 0, 255, 0)"
       );
-      for (const point of trianglePoints) {
-        ctx.fillStyle = triangleGradient.hsvAt(normYPos).toHexString();
-        ctx.fillRect(point[0] - 2, point[1] - 2, 4, 4);
-      }
       ctx.beginPath();
       ctx.moveTo(trianglePoints[0][0], trianglePoints[0][1]);
       ctx.lineTo(trianglePoints[1][0], trianglePoints[1][1]);
@@ -2216,6 +2216,22 @@
       ctx.lineWidth = 0.5;
       ctx.stroke();
       ctx.fill();
+      for (const point of trianglePoints) {
+        const distToMouse = ((point[0] - mousePos.x) ** 2 + (point[1] - mousePos.y) ** 2) ** 0.5;
+        if (distToMouse > 400) {
+        } else {
+          const normDist = (1 - distToMouse / 400) ** 2;
+          const brightnessGrad = (0, import_tinygradient.default)(
+            triangleGradient.rgbAt(normYPos).toHexString(),
+            "rgba(255, 255, 255, 0.2)"
+          );
+          ctx.fillStyle = brightnessGrad.rgbAt(normDist).toRgbString();
+          ctx.beginPath();
+          ctx.arc(point[0], point[1], 10 * normDist, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.closePath();
+        }
+      }
     };
     const movePoints = () => {
       const newPoints = [];
@@ -2278,7 +2294,6 @@
       ctx.clearRect(0, 0, drawWidth, drawHeight);
       movePoints();
       delaunay.update();
-      console.log(mousePos);
       const triangles = delaunay.triangles.reduce(
         (accum, cur, index) => {
           if (index % 3) accum[accum.length - 1].push(cur);
