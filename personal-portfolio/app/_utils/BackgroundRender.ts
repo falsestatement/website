@@ -1,6 +1,6 @@
 import Delaunator from "delaunator";
 import tinygradient from "tinygradient";
-import { QuadTree } from "@util/QuadTree";
+import { QuadTree } from "./QuadTree";
 
 // Random Point Generation
 const randomVectors = (
@@ -61,6 +61,7 @@ self.onmessage = (e) => {
   const ctx = canvas?.getContext("2d");
   const windowInnerWidth = e.data.winWidth;
   const windowInnerHeight = e.data.winHeight;
+  mousePos = {x: windowInnerWidth / 2, y: windowInnerHeight /4}
 
   if (!ctx || !canvas || !windowInnerWidth || !windowInnerHeight) {
     mousePos = {
@@ -134,13 +135,20 @@ self.onmessage = (e) => {
         const normDist = (1 - distToMouse / 400)**2;
         const brightnessGrad = tinygradient(
           triangleGradient.rgbAt(normYPos).toHexString(),
-          "rgba(255, 255, 255, 0.2)",
+          "rgba(255, 255, 255, 0.1)",
         );
         ctx.fillStyle = brightnessGrad.rgbAt(normDist).toRgbString();
 
         ctx.beginPath();
         ctx.arc(point[0], point[1], 10 * normDist, 0, 2 * Math.PI);
         ctx.fill();
+        ctx.closePath();
+        ctx.beginPath();
+        ctx.arc(point[0], point[1], 10 * normDist, 0, 2 * Math.PI);
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = 'rgba(0,255,255,0.5)';
+        ctx.fill();
+        ctx.shadowBlur = 0;
         ctx.closePath();
       }
     }

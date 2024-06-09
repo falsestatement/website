@@ -38,4 +38,6 @@ const ProjectCard = forwardRef<
   );
 });
 
+ProjectCard.displayName = "Project Card";
+
 export default ProjectCard;

@@ -130,4 +130,6 @@ const ExperienceSection = forwardRef<HTMLElement>((_, ref) => {
   );
 });
 
+ExperienceSection.displayName = "Experience Section";
+
 export default ExperienceSection;

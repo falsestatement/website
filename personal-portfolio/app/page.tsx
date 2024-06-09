@@ -144,24 +144,24 @@ export default function Home() {
   });
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const worker = new Worker("BackgroundRender.js");
-  let offscreen = undefined;
-  let count = 0;
+  const workerRef = useRef<Worker | null>(null);
+  const offscreenRef = useRef<OffscreenCanvas | null>(null);
   useEffect(() => {
-    if (!canvasRef.current || count > 0) {
+    if (!canvasRef.current || offscreenRef.current) {
       return;
     }
-
-    offscreen = canvasRef.current.transferControlToOffscreen();
-    worker.postMessage(
+    workerRef.current = new Worker(
+      new URL("@util/BackgroundRender.ts", import.meta.url),
+    );
+    offscreenRef.current = canvasRef.current.transferControlToOffscreen();
+    workerRef.current.postMessage(
       {
-        canvas: offscreen,
+        canvas: offscreenRef.current,
         winWidth: window.innerWidth,
         winHeight: window.innerHeight,
       },
-      [offscreen],
+      [offscreenRef.current],
     );
-    count++;
   }, []);
 
   return (
@@ -172,20 +172,33 @@ export default function Home() {
             <HamburgerIcon />
           </div>
           <ul className={styles.nav}>
-            <li onClick={scrollToHero} className="nav-link-home">
-              Home
+            <li className="nav-link-home">
+              <button className={styles["nav-link"]} onClick={scrollToHero}>
+                Home
+              </button>
             </li>
-            <li onClick={scrollToAbout} className="nav-link-about">
-              About
+            <li className="nav-link-about">
+              <button className={styles["nav-link"]} onClick={scrollToAbout}>
+                About
+              </button>
             </li>
-            <li onClick={scrollToProject} className="nav-link-project">
-              Projects
+            <li className="nav-link-project">
+              <button className={styles["nav-link"]} onClick={scrollToProject}>
+                Projects
+              </button>
             </li>
-            <li onClick={scrollToExperience} className="nav-link-experience">
-              Experience
+            <li className="nav-link-experience">
+              <button
+                className={styles["nav-link"]}
+                onClick={scrollToExperience}
+              >
+                Experience
+              </button>
             </li>
-            <li onClick={scrollToContact} className="nav-link-contact">
-              Contact Me
+            <li className="nav-link-contact">
+              <button className={styles["nav-link"]} onClick={scrollToContact}>
+                Contact Me
+              </button>
             </li>
           </ul>
           <ul className={styles.socials}>
@@ -221,7 +234,7 @@ export default function Home() {
           onMouseMove={(e) => {
             const rect = canvasRef.current?.getBoundingClientRect();
             if (rect)
-              worker.postMessage({
+              workerRef.current?.postMessage({
                 mousePos: [e.clientX - rect.left, e.clientY - rect.top],
               });
           }}

@@ -59,4 +59,6 @@ const HeroSection = forwardRef<HTMLElement, {onProjectClick: () => void;}>(({onP
   );
 });
 
+HeroSection.displayName = "Hero Section";
+
 export default HeroSection;

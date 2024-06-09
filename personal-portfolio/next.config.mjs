@@ -1,6 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  transpilePackages: ['delaunator'],
-};
+const nextConfig = {};
 
 export default nextConfig;

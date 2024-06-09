@@ -1,3 +1,5 @@
+'use client'
+
 import styles from "./page.module.css";
 import TechSkillIcon from "@icon/TechSkillIcon";
 import Image from "next/image";
@@ -174,5 +176,7 @@ const AboutSection = forwardRef<HTMLElement>((_, ref) => {
     </section>
   );
 });
+
+AboutSection.displayName = "About Section";
 
 export default AboutSection;

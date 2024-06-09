@@ -59,6 +59,14 @@
   color: inherit;
 }
 
+.nav-link {
+  background: none;
+  color: var(--foreground-color);
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+}
+
 ul.socials > li,
 ul.nav > li {
   padding: 1em 0;

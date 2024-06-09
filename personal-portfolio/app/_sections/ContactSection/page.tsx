@@ -147,4 +147,6 @@ const ContactSection = forwardRef<HTMLElement>((_, ref) => {
   );
 });
 
+ContactSection.displayName = "Contact Section";
+
 export default ContactSection;
