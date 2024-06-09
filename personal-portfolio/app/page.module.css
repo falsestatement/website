@@ -24,16 +24,16 @@
 
 .header {
   position: sticky;
-  top: 0;
+  top: 1em;
+  padding: 0 1em;
   display: flex;
-  justify-content: center;
   z-index: 1;
 }
 
 .canvas {
   position: absolute;
   top: 0;
-  left: 0 ;
+  left: 0;
   object-fit: cover;
   object-position: center;
 }
@@ -41,8 +41,8 @@
 .navbar {
   display: flex;
   max-width: var(--max-width);
-  padding: 0 2em;
-  width: 100%;
+  border-radius: 10px;
+  padding: 0 1em;
   justify-content: space-between;
   background-color: rgba(var(--background-rgb), 0.4);
   backdrop-filter: blur(10px);
@@ -118,12 +118,10 @@ ul.socials > li:hover {
 
 @media (min-width: 750px) {
   .header {
-    top: 1em;
+    justify-content: center;
   }
-
   .navbar {
-    border-radius: 10px;
-    margin: 0 1em;
+    width: 100%;
   }
 
   .nav {

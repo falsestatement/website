@@ -52,7 +52,7 @@ const HeroSection = forwardRef<HTMLElement, {onProjectClick: () => void;}>(({onP
         </button>
         <button className={styles.resumeButton}>
           <ResumeIcon />
-          <p>Resume</p>
+          <p>Contact Me</p>
         </button>
       </div>
     </section>
