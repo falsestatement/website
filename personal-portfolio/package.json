@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:workers": "tsc -p tsconfig.worker.json",
     "start": "next start",
     "lint": "next lint"
   },
+  "type": "module",
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "@types/delaunator": "^5.0.2",
@@ -24,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "esbuild": "0.21.4",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "typescript": "^5"

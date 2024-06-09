@@ -8,6 +8,7 @@
   height: 100vh;
   min-height: 450px;
   margin: auto;
+  pointer-events: none;
 }
 
 .title {
@@ -19,14 +20,14 @@
   font-weight: 900;
   line-height: 1em;
   font-size: var(--h3-font-size);
-    color: var(--foreground-color);
-    border-radius: 10px 10px 0 0;
-    height: 100%;
-    display:flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+  color: var(--foreground-color);
+  border-radius: 10px 10px 0 0;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .subHeading {
@@ -35,13 +36,13 @@
   color: var(--accent-orange);
   line-height: 1.2em;
   font-size: var(--h6-font-size);
-    border-radius: 0 0 10px 10px;
-    position:relative;
-    height: 100%;
-    display:flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+  border-radius: 0 0 10px 10px;
+  position: relative;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .button-container {
@@ -55,9 +56,10 @@
 
 .viewButton {
   font-size: var(--h6-font-size);
-    position:relative;
+  position: relative;
   width: fit-content;
   user-select: none;
+  pointer-events: auto;
 }
 
 .resumeButton {
@@ -65,8 +67,9 @@
   background: none;
   color: var(--foreground-color);
   width: fit-content;
-    position:relative;
-    user-select: none;
+  position: relative;
+  user-select: none;
+  pointer-events: auto;
 }
 
 @media (min-width: 750px) {

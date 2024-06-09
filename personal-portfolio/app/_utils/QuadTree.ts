@@ -40,8 +40,8 @@ export class QuadTree {
     }
 
     ctx.strokeStyle = "white";
-    ctx.lineWidth = 2;
-    ctx.strokeRect(minw, minh, maxw - minw, maxh - minh);
+    ctx.lineWidth = 1;
+    //ctx.strokeRect(minw, minh, maxw - minw, maxh - minh);
   }
 
   addPoint(point: number[]) {
