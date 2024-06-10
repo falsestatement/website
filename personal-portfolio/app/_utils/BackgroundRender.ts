@@ -52,16 +52,16 @@ const borderPoints = (
 };
 
 let mousePos = { x: 0, y: 0 };
-const minVelocity = -0.5;
-const maxVelocity = 0.5;
-const repulsiveForceConstant = -2000;
+const minVelocity = -0;
+const maxVelocity = 0;
+const repulsiveForceConstant = -1000;
 
 self.onmessage = (e) => {
   const canvas = e.data.canvas;
   const ctx = canvas?.getContext("2d");
   const windowInnerWidth = e.data.winWidth;
   const windowInnerHeight = e.data.winHeight;
-  mousePos = {x: windowInnerWidth / 2, y: windowInnerHeight /4}
+  mousePos = { x: windowInnerWidth / 2, y: windowInnerHeight / 4 };
 
   if (!ctx || !canvas || !windowInnerWidth || !windowInnerHeight) {
     mousePos = {
@@ -72,21 +72,13 @@ self.onmessage = (e) => {
   }
 
   canvas.width = windowInnerWidth;
-  canvas.height = windowInnerHeight;
+  canvas.height = windowInnerHeight * 1.1;
 
   const drawWidth = canvas.width;
   const drawHeight = canvas.height;
   const numPoints = Math.floor((drawHeight * drawWidth) / 25000);
-  const velocities = randomVectors(
-    numPoints,
-    minVelocity,
-    maxVelocity,
-    minVelocity,
-    maxVelocity,
-  );
-
   const points = randomVectors(numPoints, 0, drawWidth, 0, drawHeight);
-  const border = borderPoints(1, 0, drawWidth, 0, drawHeight);
+  const border = borderPoints(0, 0, drawWidth, 0, drawHeight);
   const delaunay = Delaunator.from(
     [...points, ...border],
     (p) => p.x,
@@ -129,10 +121,8 @@ self.onmessage = (e) => {
       const distToMouse =
         ((point[0] - mousePos.x) ** 2 + (point[1] - mousePos.y) ** 2) ** 0.5;
       if (distToMouse > 400) {
-        // ctx.fillStyle = triangleGradient.hsvAt(normYPos).toHexString();
-        // ctx.fillRect(point[0] - 1, point[1] - 1, 2, 2);
       } else {
-        const normDist = (1 - distToMouse / 400)**2;
+        const normDist = (1 - distToMouse / 400) ** 2;
         const brightnessGrad = tinygradient(
           triangleGradient.rgbAt(normYPos).toHexString(),
           "rgba(255, 255, 255, 0.1)",
@@ -146,7 +136,7 @@ self.onmessage = (e) => {
         ctx.beginPath();
         ctx.arc(point[0], point[1], 10 * normDist, 0, 2 * Math.PI);
         ctx.shadowBlur = 20;
-        ctx.shadowColor = 'rgba(0,255,255,0.5)';
+        ctx.shadowColor = "rgba(0,255,255,0.5)";
         ctx.fill();
         ctx.shadowBlur = 0;
         ctx.closePath();
@@ -165,15 +155,22 @@ self.onmessage = (e) => {
       delaunay.coords as number[],
       ctx,
     );
-
     for (let i = 0; i < numPoints; i++) {
-      const newX = delaunay.coords[i * 2] + velocities[i].x;
-      const newY = delaunay.coords[i * 2 + 1] + velocities[i].y;
-      if (newX < 0 || newX > drawWidth) velocities[i].x = -velocities[i].x;
-      if (newY < 0 || newY > drawHeight) velocities[i].y = -velocities[i].y;
-      newPoints[i * 2] = delaunay.coords[i * 2] + velocities[i].x;
-      newPoints[i * 2 + 1] = delaunay.coords[i * 2 + 1] + velocities[i].y;
+      newPoints[i * 2] = delaunay.coords[i * 2];
+      newPoints[i * 2 + 1] = delaunay.coords[i * 2 + 1];
+      let totalForce = [0, 0];
+      const x = delaunay.coords[i * 2];
+      const y = delaunay.coords[i * 2 + 1];
 
+      const vecFieldFn = [-y + mousePos.y, x - mousePos.x];
+      const vecFieldDist = Math.sqrt(vecFieldFn[0] ** 2 + vecFieldFn[1] ** 2);
+      const vecFieldForce = [
+        (vecFieldFn[0] * Math.min(20 / vecFieldDist, 0.1)) / vecFieldDist,
+        (vecFieldFn[1] * Math.min(20 / vecFieldDist, 0.1)) / vecFieldDist,
+      ];
+      
+      newPoints[i * 2]  += vecFieldForce[0];
+      newPoints[i * 2 + 1] += vecFieldForce[1];
       const test = {
         minw: delaunay.coords[i * 2] - 150,
         maxw: delaunay.coords[i * 2] + 150,
@@ -188,9 +185,6 @@ self.onmessage = (e) => {
         test.maxh,
       );
 
-      let totalForce = [0, 0];
-      const x = delaunay.coords[i * 2];
-      const y = delaunay.coords[i * 2 + 1];
       for (let j = 0; j < importantPoints.length / 2; j++) {
         const targetx = importantPoints[j * 2];
         const targety = importantPoints[j * 2 + 1];
@@ -199,14 +193,23 @@ self.onmessage = (e) => {
           (targetx - x) ** 2 + (targety - y) ** 2,
         );
 
+        const mouseDist = Math.sqrt(
+          (mousePos.x - x) ** 2 + (mousePos.y - y) ** 2,
+        );
+
         if (!euclidianDist) continue;
         const targetForce = [
           ((targetx - x) * repulsiveForceConstant) / euclidianDist ** 3,
           ((targety - y) * repulsiveForceConstant) / euclidianDist ** 3,
         ];
 
-        totalForce[0] += targetForce[0];
-        totalForce[1] += targetForce[1];
+        const mouseForce = [
+          ((mousePos.x - x) * -200) / mouseDist ** 3,
+          ((mousePos.y - y) * -200) / mouseDist ** 3,
+        ];
+
+        totalForce[0] += targetForce[0] + mouseForce[0];
+        totalForce[1] += targetForce[1] + mouseForce[1];
       }
       newPoints[i * 2] += totalForce[0];
       newPoints[i * 2 + 1] += totalForce[1];

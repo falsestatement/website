@@ -28,6 +28,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  user-select: none;
 }
 
 .subHeading {
@@ -43,6 +44,7 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  user-select: none;
 }
 
 .button-container {
@@ -62,7 +64,7 @@
   pointer-events: auto;
 }
 
-.resumeButton {
+.contactButton {
   font-size: var(--h6-font-size);
   background: none;
   color: var(--foreground-color);
@@ -70,6 +72,16 @@
   position: relative;
   user-select: none;
   pointer-events: auto;
+}
+
+.scroll-label {
+  visibility: hidden;
+  position: absolute;
+  font-weight: 100;
+  top: 90vh;
+  letter-spacing: 0.05em;
+  margin: 0 auto;
+  user-select: none;
 }
 
 @media (min-width: 750px) {
@@ -84,7 +96,7 @@
     flex-direction: row-reverse;
   }
 
-  .resumeButton {
+  .contactButton {
     border: solid 2px var(--foreground-color);
   }
 }

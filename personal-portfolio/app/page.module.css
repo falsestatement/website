@@ -62,9 +62,10 @@
 .nav-link {
   background: none;
   color: var(--foreground-color);
-  margin: 0;
-  padding: 0;
-  font-weight: 400;
+  margin: -2em -1em;
+  padding: 2em 1em;
+  font-weight: 300;
+  user-select: none;
 }
 
 ul.socials > li,
@@ -73,8 +74,6 @@ ul.nav > li {
   position: relative;
   isolation: isolate;
   overflow: clip;
-  cursor: pointer;
-  user-select: none;
 }
 
 ul.nav > li {
