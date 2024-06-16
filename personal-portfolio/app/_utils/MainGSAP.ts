@@ -10,10 +10,12 @@ export const scrollTo = ({
   target,
   offset,
   contextSafe,
+  fn,
 }: {
   target: RefObject<HTMLElement>;
   offset: number;
   contextSafe: ContextSafeFunc;
+  fn?: Function;
 }) => {
   return contextSafe
     ? contextSafe(() => {
@@ -42,6 +44,8 @@ export const scrollTo = ({
           ease: "power3",
         });
       })
+
+      if(fn) fn();
     })
     : contextSafeError;
 };

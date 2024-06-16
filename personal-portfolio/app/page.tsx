@@ -21,7 +21,7 @@ import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 import { ReactLenis } from "lenis/react";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null);
@@ -30,12 +30,45 @@ export default function Home() {
   const experienceRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
+  const mobileNavRef = useRef<HTMLUListElement>(null);
+  const timelineRef = useRef<GSAPTimeline | null>(null);
+  const mobileNavLinkRefs = useRef<(HTMLLIElement | null)[]>([]);
+
+  const [showMobileNav, setShowMobileNav] = useState(false);
 
   const contextSafeError = () =>
     console.error("unable to acquire contextSafe.");
 
   const { contextSafe } = useGSAP((_, contextSafe) => {
     gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin);
+    timelineRef.current = gsap
+      .timeline()
+      .to(
+        mobileNavRef.current,
+        {
+          yPercent: 100,
+          ease: "expo.out",
+          duration: 0.5,
+        },
+        0,
+      )
+      .reverse()
+      .to(
+        navbarRef.current,
+        {
+          "--bg-opacity": 0,
+          duration: 0.3,
+          ease: "expo.out",
+        },
+        0,
+      )
+      .from(mobileNavLinkRefs.current, {
+        y: -50,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.1,
+        ease: "power4.out",
+      });
 
     gsap.from(navbarRef.current, {
       y: "-100%-=2em",
@@ -52,8 +85,8 @@ export default function Home() {
         scrub: true,
         onLeave: contextSafe
           ? contextSafe(() => {
-              gsap.to(".nav-link-home", { "--progress": "200%" });
-            })
+            gsap.to(".nav-link-home", { "--progress": "200%" });
+          })
           : contextSafeError,
       },
     });
@@ -66,8 +99,8 @@ export default function Home() {
         scrub: true,
         onLeave: contextSafe
           ? contextSafe(() => {
-              gsap.to(".nav-link-about", { "--progress": "200%" });
-            })
+            gsap.to(".nav-link-about", { "--progress": "200%" });
+          })
           : contextSafeError,
       },
     });
@@ -81,8 +114,8 @@ export default function Home() {
         scrub: true,
         onLeave: contextSafe
           ? contextSafe(() => {
-              gsap.to(".nav-link-project", { "--progress": "200%" });
-            })
+            gsap.to(".nav-link-project", { "--progress": "200%" });
+          })
           : contextSafeError,
       },
     });
@@ -96,8 +129,8 @@ export default function Home() {
         scrub: true,
         onLeave: contextSafe
           ? contextSafe(() => {
-              gsap.to(".nav-link-experience", { "--progress": "200%" });
-            })
+            gsap.to(".nav-link-experience", { "--progress": "200%" });
+          })
           : contextSafeError,
       },
     });
@@ -117,35 +150,49 @@ export default function Home() {
     target: heroRef,
     offset: 0,
     contextSafe,
+    fn: () => setShowMobileNav(false),
   });
 
   const scrollToAbout = scrollTo({
     target: aboutRef,
     offset: 150,
     contextSafe,
+    fn: () => setShowMobileNav(false),
   });
 
   const scrollToProject = scrollTo({
     target: projectRef,
     offset: 150,
     contextSafe,
+    fn: () => setShowMobileNav(false),
   });
 
   const scrollToExperience = scrollTo({
     target: experienceRef,
     offset: 150,
     contextSafe,
+    fn: () => setShowMobileNav(false),
   });
 
   const scrollToContact = scrollTo({
     target: contactRef,
-    offset: 0,
+    offset: 100,
     contextSafe,
+    fn: () => setShowMobileNav(false),
   });
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const workerRef = useRef<Worker | null>(null);
   const offscreenRef = useRef<OffscreenCanvas | null>(null);
+
+  useGSAP(() => {
+    if (showMobileNav) {
+      timelineRef.current?.play();
+    } else {
+      timelineRef.current?.reverse();
+    }
+  }, [showMobileNav]);
+
   useEffect(() => {
     if (!canvasRef.current || offscreenRef.current) {
       return;
@@ -168,7 +215,10 @@ export default function Home() {
     <ReactLenis root options={{ duration: 0.7 }}>
       <header className={styles.header}>
         <nav ref={navbarRef} className={styles.navbar}>
-          <div className={styles.hamburger}>
+          <div
+            onClick={() => setShowMobileNav((cur) => !cur)}
+            className={styles.hamburger}
+          >
             <HamburgerIcon />
           </div>
           <ul className={styles.nav}>
@@ -224,6 +274,68 @@ export default function Home() {
             </li>
           </ul>
         </nav>
+        <ul ref={mobileNavRef} className={styles["mobile-nav"]}>
+          <li
+            ref={(el) => {
+              mobileNavLinkRefs.current[0] = el;
+            }}
+          >
+            <button
+              className={styles["mobile-nav-link"]}
+              onClick={scrollToHero}
+            >
+              HOME
+            </button>
+          </li>
+          <li
+            ref={(el) => {
+              mobileNavLinkRefs.current[1] = el;
+            }}
+          >
+            <button
+              className={styles["mobile-nav-link"]}
+              onClick={scrollToAbout}
+            >
+              ABOUT
+            </button>
+          </li>
+          <li
+            ref={(el) => {
+              mobileNavLinkRefs.current[2] = el;
+            }}
+          >
+            <button
+              className={styles["mobile-nav-link"]}
+              onClick={scrollToProject}
+            >
+              PROJECTS
+            </button>
+          </li>
+          <li
+            ref={(el) => {
+              mobileNavLinkRefs.current[3] = el;
+            }}
+          >
+            <button
+              className={styles["mobile-nav-link"]}
+              onClick={scrollToExperience}
+            >
+              EXPERIENCE
+            </button>
+          </li>
+          <li
+            ref={(el) => {
+              mobileNavLinkRefs.current[4] = el;
+            }}
+          >
+            <button
+              className={styles["mobile-nav-link"]}
+              onClick={scrollToContact}
+            >
+              CONTACT ME
+            </button>
+          </li>
+        </ul>
       </header>
       <main className={styles.main}>
         <canvas
@@ -241,7 +353,11 @@ export default function Home() {
         >
           background image
         </canvas>
-        <HeroSection onProjectClick={scrollToProject} ref={heroRef} />
+        <HeroSection
+          onProjectClick={scrollToProject}
+          onContactClick={scrollToContact}
+          ref={heroRef}
+        />
         <AboutSection ref={aboutRef} />
         <ProjectSection ref={projectRef} />
         <ExperienceSection ref={experienceRef} />

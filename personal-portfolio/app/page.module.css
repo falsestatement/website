@@ -28,6 +28,7 @@
   padding: 0 1em;
   display: flex;
   z-index: 1;
+  isolation: isolate;
 }
 
 .canvas {
@@ -39,16 +40,18 @@
 }
 
 .navbar {
+  --bg-opacity: 0.4;
   display: flex;
   max-width: var(--max-width);
   border-radius: 10px;
   padding: 0 1em;
   justify-content: space-between;
-  background-color: rgba(var(--background-rgb), 0.4);
+  background-color: rgba(var(--background-rgb), var(--bg-opacity));
   backdrop-filter: blur(10px);
   align-items: center;
   margin: 0;
   visibility: hidden;
+  z-index: 1;
 }
 
 .nav {
@@ -66,6 +69,41 @@
   padding: 2em 1em;
   font-weight: 300;
   user-select: none;
+}
+
+.mobile-nav {
+  position: absolute;
+  top: calc(-1em - 100vh);
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-color);
+  backdrop-filter: blur(10px);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.mobile-nav > li {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav-link {
+  padding: 1rem 0;
+  margin: 0;
+  width: 100%;
+  font-size: var(--h4-font-size);
+  background: none;
+  color: var(--foreground-color);
+  font-weight: 100;
+  justify-content: flex-start;
+  padding-left: 1em;
 }
 
 ul.socials > li,
