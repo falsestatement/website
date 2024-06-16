@@ -40,7 +40,7 @@ const ProjectSection = forwardRef<HTMLElement>((_, ref) => {
     portfolio: {
       title: "PERSONAL PORTFOLIO",
       description:
-        "The website you are currently viewing, using industry standard practices, CI/CD, and automated cloud infrastructure deployment through using Terraform deployment onto AWS web services.",
+        "The website portfolio you are viewing is made with Next.js with GSAP animations, which is then deployed using Netlify.",
       tags: ["Web App", "Github Actions", "AWS", "Terraform"],
       img: "portfolio.png",
     },
