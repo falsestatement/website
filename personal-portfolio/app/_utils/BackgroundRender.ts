@@ -52,8 +52,6 @@ const borderPoints = (
 };
 
 let mousePos = { x: 0, y: 0 };
-const minVelocity = -0;
-const maxVelocity = 0;
 const repulsiveForceConstant = -1000;
 
 self.onmessage = (e) => {
