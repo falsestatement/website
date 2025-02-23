@@ -65,6 +65,31 @@
   outline: solid 3px var(--accent-blue);
 }
 
+.error-input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  min-height: 2em;
+  border: none;
+  background: var(--background-color);
+  color: inherit;
+  padding: 1em;
+  font-size: var(--p-font-size);
+  transition: background-color 0.4s ease;
+  outline: solid 3px var(--accent-error);
+}
+
+.error-label {
+  position: absolute;
+  color: var(--accent-error);
+  top: -0.5em;
+  left: 1em;
+  background-color: var(--background-color);
+  font-size: 12px;
+  padding: 0 0.5em;
+  pointer-events: none;
+}
+
 .inactive-label {
   transition:
     all 0.4s ease,
